@@ -74,6 +74,13 @@ export default class Textlintrc {
         return new Textlintrc(Object.assign({}, this, {content}));
     }
 
+    /**
+     * @param {Textlintrc} textlintrc
+     */
+    equals(textlintrc) {
+        return textlintrc.filePath === this.filePath;
+    }
+
     toJSON() {
         return this._jsonValue;
     }

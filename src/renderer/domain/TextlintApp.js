@@ -1,7 +1,7 @@
 // MIT © 2017 azu
 "use strict";
 import TextlintAppId from "./TextlintAppId";
-import TextlintrcList from "./textlintrc/TextlintrcList";
+import Workspaces from "./workspace/Workspaces";
 export default class TextlintApp {
 
     /**
@@ -11,6 +11,6 @@ export default class TextlintApp {
 
     constructor() {
         this.id = new TextlintAppId();
-        this.textlintrcList = new TextlintrcList();
+        this.workspaces = new Workspaces();
     }
 }

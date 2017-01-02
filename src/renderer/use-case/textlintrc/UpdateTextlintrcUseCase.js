@@ -17,7 +17,7 @@ export default class UpdateTextlintrcUseCase extends UseCase {
      */
     execute(content) {
         const app = this.textlintAppRepository.lastUsed();
-        app.textlintrcList.updateCurrentContent(content);
+        app.workspaces.current.updateCurrentContent(content);
         this.textlintAppRepository.save(app)
     }
 }
