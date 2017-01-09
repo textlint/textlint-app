@@ -6,7 +6,7 @@ import WorkspaceFactory from "./workspace/WorkspaceFactory"
 export default class TextlintAppFactor {
     /**
      * @param {string} directory - default workspace directory
-     * @param {Textlintrc} textlintrc - default textlintrc
+     * @param {Textlintrc} [textlintrc] - default textlintrc
      * @returns {TextlintApp}
      */
     static create({directory, textlintrc}) {
