@@ -1,4 +1,4 @@
-# textlint-message-to-codemirror
+# textlint-app-textlint-to-codemirror
 
 Convert textlint'Ss messages to CodeMirror lint object
 
@@ -6,52 +6,41 @@ Convert textlint'Ss messages to CodeMirror lint object
 
 Install with [npm](https://www.npmjs.com/):
 
-    npm install textlint-message-to-codemirror
+    npm install textlint-app-textlint-to-codemirror
 
 ## Usage
 
 ```js
+// MIT © 2017 azu
+"use strict";
 const assert = require("assert");
-const textlintToCodeMirror = require("textlint-message-to-codemirror");
-describe("textlintToCodeMirror", () => {
-    it("message to codemirror", () => {
-        assert.deepEqual(textlintToCodeMirror({
-            message: "message",
-            severity: 1,
-            line: 1,
-            column: 1
-        }), {
-            from: {
-                ch: 0,
-                line: 0
-            },
-            to: {
-                ch: 1,
-                line: 0
-            },
-            message: "message",
-            severity: "warning"
+const path = require("path");
+const createValidator = require("textlint-app-textlint-to-codemirror");
+describe("textlint-app-textlint-to-codemirror", () => {
+    it("lint and return codemirror result", () => {
+        const validate = createValidator({
+            textlintrcFilePath: path.join(__dirname, "fixtures", ".textlintrc"),
+            nodeModulesDirectory: path.join(__dirname, "..", "node_modules")
         });
-
-        assert.deepEqual(textlintToCodeMirror({
-            message: "message",
-            severity: 2,
-            line: 10,
-            column: 10
-        }), {
-            from: {
-                ch: 9,
-                line: 9
-            },
-            to: {
-                ch: 10,
-                line: 9
-            },
-            message: "message",
-            severity: "error"
+        return validate("- [ ] text", ".md").then(result => {
+            assert.deepEqual(result, [
+                {
+                    from: {
+                        ch: 2,
+                        line: 0
+                    },
+                    to: {
+                        ch: 3,
+                        line: 0
+                    },
+                    message: "Found TODO: '- [ ] text'",
+                    severity: "error"
+                }
+            ]);
         });
     });
 });
+
 ```
 
 ## Running tests

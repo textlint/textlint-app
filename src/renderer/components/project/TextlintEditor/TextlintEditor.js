@@ -2,7 +2,7 @@
 "use strict";
 // node
 const remote = require("electron").remote;
-const createValidator = remote.require("/Users/azu/.ghq/github.com/textlint/textlint-app/src/lint.js");
+const createValidator = remote.require("textlint-app-textlint-to-codemirror");
 // main
 const React = require("react");
 const CodeMirror = require("codemirror");

@@ -9,10 +9,10 @@
     "lib/",
     "src/"
   ],
-  "name": "textlint-message-to-codemirror",
+  "name": "textlint-app-textlint-to-codemirror",
   "version": "1.0.0",
   "description": "Convert textlint's messages to CodeMirror lint object",
-  "main": "lib/textlint-message-to-codemirror.js",
+  "main": "lib/textlint-app-textlint-to-codemirror",
   "scripts": {
     "test": "mocha test"
   },
@@ -22,13 +22,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/packages/textlint-message-to-codemirror.git"
+    "url": "https://github.com/textlint/textlint-app.git"
   },
   "bugs": {
-    "url": "https://github.com/packages/textlint-message-to-codemirror/issues"
+    "url": "https://github.com/textlint/textlint-app/issues"
   },
-  "homepage": "https://github.com/packages/textlint-message-to-codemirror",
+  "homepage": "https://github.com/textlint/textlint-app",
   "devDependencies": {
     "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "textlint": "^7.2.1",
+    "textlint-message-to-codemirror": "^1.0.0",
+    "textlint-rule-no-todo": "^2.0.0"
   }
 }
