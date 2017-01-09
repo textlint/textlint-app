@@ -83,5 +83,5 @@ crashlytics-build.properties
 
 
 /lib
-public/build
 /app/build/
+/dist

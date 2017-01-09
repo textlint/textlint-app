@@ -30,9 +30,12 @@ app.on('window-all-closed', function() {
 });
 
 app.on('activate', function() {
+    if (!application) {
+        return;
+    }
     // On OS X it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
-    if (application && application.isDeactived) {
+    if (application.isDeactived) {
         application.launch();
     } else {
         application.show();
@@ -40,7 +43,11 @@ app.on('activate', function() {
 });
 
 app.on('ready', function() {
-    installExtension().then(() => {
+    if (process.env.NODE_ENV === 'development') {
+        installExtension().then(() => {
+            startRenderApp();
+        });
+    } else {
         startRenderApp();
-    });
+    }
 });

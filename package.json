@@ -13,9 +13,10 @@
   "name": "textlint-app",
   "version": "1.0.0",
   "description": "textlint app for crossplatform.",
-  "main": "lib/textlint-app.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha test/",
+    "postinstall": "install-app-deps",
     "bootstrap": "lerna bootstrap",
     "start": "npm-run-all clean --parallel watch:*",
     "electron": "electron .",
@@ -25,34 +26,32 @@
     "watch:js": "cross-env NODE_ENV=development webpack -d --watch",
     "watch:css": "chokidar --initial 'src/**/*.css' -c 'cross-env NODE_ENV=development postcss --config postcss.config.js'",
     "watch": "npm-run-all clean --parallel watch:*",
-    "clean": "rimraf public/build && mkdirp public/build"
+    "clean": "rimraf public/build dist/ && mkdirp public/build",
+    "pack": "npm run build && build --dir",
+    "dist": "npm run build && build",
+    "release": "npm run build && build"
   },
-  "config": {
-    "forge": {
-      "make_targets": {
-        "win32": [
-          "squirrel"
-        ],
-        "darwin": [
-          "zip"
-        ],
-        "linux": [
-          "deb",
-          "rpm"
-        ]
-      },
-      "electronPackagerConfig": {},
-      "electronWinstallerConfig": {
-        "name": ""
-      },
-      "electronInstallerDebian": {},
-      "electronInstallerRedhat": {},
-      "github_repository": {
-        "owner": ""
-      },
-      "windowsStoreConfig": {
-        "packageName": ""
-      }
+  "build": {
+    "appId": "info.efcl.textlint",
+    "category": "public.app-category.graphics-design",
+    "files": [
+      "index.js",
+      "app",
+      "node_modules"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
     }
   },
   "keywords": [
@@ -84,9 +83,9 @@
     "cross-env": "^3.1.3",
     "css-loader": "^0.26.1",
     "electron": "^1.4.13",
+    "electron-builder": "^11.2.0",
     "electron-devtools-installer": "^2.0.1",
-    "electron-forge": "^2.5.2",
-    "electron-prebuilt-compile": "1.4.13",
+    "electron-packager": "^8.4.0",
     "electron-webpack-plugin": "^1.2.2",
     "json-loader": "^0.5.4",
     "lerna": "2.0.0-beta.31",
@@ -112,7 +111,6 @@
     "codemirror": "^5.22.0",
     "codemirror-textlint": "^1.1.0",
     "debug": "^2.6.0",
-    "electron-compile": "^5.1.2",
     "electron-window-state": "^4.0.1",
     "map-like": "^1.0.3",
     "normalize.css": "^5.0.0",
