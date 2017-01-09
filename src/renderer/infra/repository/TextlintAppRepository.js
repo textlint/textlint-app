@@ -42,7 +42,7 @@ export class TextlintAppRepository extends EventEmitter {
      * @param {TextlintApp} textlintApp
      */
     save(textlintApp) {
-        this._database.set(`lastUsed`, textlintApp);
+        this._database.set("lastUsed", textlintApp);
         this._database.set(`${textlintApp.id}`, textlintApp);
         this.emit(REPOSITORY_CHANGE, textlintApp);
     }

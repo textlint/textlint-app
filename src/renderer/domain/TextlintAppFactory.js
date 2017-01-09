@@ -1,8 +1,8 @@
 // MIT © 2017 azu
 "use strict";
-import TextlintApp from "./TextlintApp"
-import Workspaces from "./workspace/Workspaces"
-import WorkspaceFactory from "./workspace/WorkspaceFactory"
+import TextlintApp from "./TextlintApp";
+import Workspaces from "./workspace/Workspaces";
+import WorkspaceFactory from "./workspace/WorkspaceFactory";
 export default class TextlintAppFactor {
     /**
      * @param {string} directory - default workspace directory

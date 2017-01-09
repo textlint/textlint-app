@@ -9,7 +9,13 @@ import MessageNotification from "../../project/MessageNotification/MessageNotifi
 // use-case
 import InstallTextlintPackageUseCase from "../../../use-case/workspace/InstallTextlintPackageUseCase";
 import UpdateTextlintrcUseCase from "../../../use-case/textlintrc/UpdateTextlintrcUseCase";
+// state
+import {TextlintrcEditorState} from "../../../store/TextlintrcEditor/TextlintrcEditorStore";
 export default class TextlintrcEditorContainer extends React.Component {
+
+    static propTypes = {
+        textlintrcEditor: React.PropTypes.instanceOf(TextlintrcEditorState).isRequired
+    };
 
     constructor() {
         super();
@@ -17,15 +23,15 @@ export default class TextlintrcEditorContainer extends React.Component {
         this.state = {
             textValue: ""
         };
-        this.onClickInstall = (event) => {
+        this.onClickInstall = event => {
             return locator.context.useCase(InstallTextlintPackageUseCase.create()).execute();
         };
-        this.onChangeValue = (value) => {
+        this.onChangeValue = value => {
             locator.context.useCase(UpdateTextlintrcUseCase.create()).execute(value);
         };
-        this.onSubmitDirectory = (value) => {
+        this.onSubmitDirectory = value => {
             console.log(value);
-        }
+        };
     }
 
     render() {

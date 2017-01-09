@@ -5,7 +5,7 @@ const React = require("react");
 import {
     MessageBar,
     MessageBarType
-} from 'office-ui-fabric-react';
+} from "office-ui-fabric-react";
 export default class MessageNotification extends React.Component {
     static propTypes = {
         children: React.PropTypes.string
@@ -15,6 +15,6 @@ export default class MessageNotification extends React.Component {
         if (!this.props.children) {
             return null;
         }
-        return <MessageBar>{this.props.children}</MessageBar>
+        return <MessageBar>{this.props.children}</MessageBar>;
     }
 }

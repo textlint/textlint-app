@@ -3,6 +3,7 @@
 // node
 const remote = require("electron").remote;
 const createValidator = remote.require("textlint-app-textlint-to-codemirror");
+const debug = require("debug")("textlint-app:TextlintEditor");
 // main
 const React = require("react");
 const CodeMirror = require("codemirror");
@@ -12,7 +13,7 @@ require("codemirror/addon/lint/lint.css");
 export default class TextlintEditor extends React.Component {
     static propTypes = {
         modulesDirectory: React.PropTypes.string,
-        textlintrcFilePath: React.PropTypes.string,
+        textlintrcFilePath: React.PropTypes.string
     };
 
     constructor() {
@@ -41,8 +42,8 @@ export default class TextlintEditor extends React.Component {
 
     render() {
         return <div className="TextlintEditor">
-            <textarea id="TextlintEditor-textarea" ref={(c) => this._textareaElement = c }/>
-        </div>
+            <textarea id="TextlintEditor-textarea" ref={c => this._textareaElement = c }/>
+        </div>;
     }
 
     /**
@@ -56,19 +57,18 @@ export default class TextlintEditor extends React.Component {
         textlintrcFilePath,
         nodeModulesDirectory
     }) {
-        console.log("textlintrcObject", {textlintrcFilePath, nodeModulesDirectory});
         return (text, callback) => {
             if (!text) {
                 return callback([]);
             }
             const validator = createValidator({textlintrcFilePath, nodeModulesDirectory});
             validator(text).then(results => {
-                console.log(results);
+                debug(results);
                 callback(results);
             }).catch(error => {
-                console.log(error);
+                debug(error);
                 callback([]);
             });
-        }
+        };
     }
 }

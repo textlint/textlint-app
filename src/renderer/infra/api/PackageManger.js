@@ -25,7 +25,7 @@ export default class PackageManger {
             return {
                 content,
                 filePath: manager.textlintrcFilePath
-            }
+            };
         });
     }
 }

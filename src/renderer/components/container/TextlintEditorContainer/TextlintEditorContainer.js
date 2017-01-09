@@ -17,6 +17,6 @@ export default class TextlintEditorContainer extends React.Component {
         return <TextlintEditor
             textlintrcFilePath={textlintrcEditor.filePath}
             modulesDirectory={textlintrcEditor.modulesDirectory}
-        />
+        />;
     }
 }

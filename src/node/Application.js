@@ -1,14 +1,14 @@
 // MIT © 2017 azu
 "use strict";
 import {app} from "electron";
-import {BrowserWindow} from 'electron';
+import {BrowserWindow} from "electron";
 const url = require("url");
 import path from "path";
-import windowStateKeeper from 'electron-window-state';
-const ipcMain = require('electron').ipcMain;
+import windowStateKeeper from "electron-window-state";
+const ipcMain = require("electron").ipcMain;
 export default class Application {
     get isDeactived() {
-        return this.mainWindow == null;
+        return this.mainWindow === null;
     }
 
     constructor() {
@@ -17,7 +17,7 @@ export default class Application {
 
     launch() {
         // command line
-        let mainWindowState = windowStateKeeper({
+        const mainWindowState = windowStateKeeper({
             defaultWidth: 800,
             defaultHeight: 600
         });
@@ -33,20 +33,20 @@ export default class Application {
         const index = {
             html: `${__dirname}/app/index.html`
         };
-        let format = url.format({
+        const format = url.format({
             pathname: path.join(__dirname, "..", "index.html"),
-            protocol: 'file:',
+            protocol: "file:",
             slashes: true
         });
         this.mainWindow.loadURL(format);
-        this.mainWindow.webContents.on('did-finish-load', () => {
+        this.mainWindow.webContents.on("did-finish-load", () => {
             // loaded
         });
         // automatically (the listeners will be removed when the window is closed)
         // and restore the maximized or full screen state
         mainWindowState.manage(this.mainWindow);
 
-        if (process.env.NODE_ENV !== 'production') {
+        if (process.env.NODE_ENV !== "production") {
             this.mainWindow.openDevTools();
         }
     }

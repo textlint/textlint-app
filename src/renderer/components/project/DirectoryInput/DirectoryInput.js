@@ -3,12 +3,12 @@
 const React = require("react");
 import {
     TextField
-} from 'office-ui-fabric-react';
+} from "office-ui-fabric-react";
 import {
     Button
-} from 'office-ui-fabric-react';
+} from "office-ui-fabric-react";
 export default class DirectoryInput extends React.Component {
-    static propsType = {
+    static propTypes = {
         onSubmit: React.PropTypes.func.isRequired,
         defaultDir: React.PropTypes.string
     };
@@ -19,14 +19,14 @@ export default class DirectoryInput extends React.Component {
             value: undefined
         };
 
-        this._onChanged = (value) => {
+        this._onChanged = value => {
             if (!value) {
                 return;
             }
             return this.setState({
                 value
             });
-        }
+        };
 
     }
 
@@ -43,6 +43,6 @@ export default class DirectoryInput extends React.Component {
                 onChanged={this._onChanged}
             />
             <Button className="DirectoryInput-submitButton" onClick={submit}>決定</Button>
-        </div>
+        </div>;
     }
 }

@@ -1,7 +1,7 @@
 // MIT © 2017 azu
 "use strict";
 
-const defaultMenu = require('electron-default-menu');
+const defaultMenu = require("electron-default-menu");
 import {Menu, app, shell} from "electron";
 import Application from "./Application";
 let application = null;
@@ -11,10 +11,10 @@ function startRenderApp() {
 }
 function installExtension() {
     return new Promise((resolve, reject) => {
-        if (process.env.NODE_ENV === 'development') {
-            const installer = require('electron-devtools-installer'); // eslint-disable-line global-require
+        if (process.env.NODE_ENV === "development") {
+            const installer = require("electron-devtools-installer"); // eslint-disable-line global-require
 
-            const extension = 'REACT_DEVELOPER_TOOLS';
+            const extension = "REACT_DEVELOPER_TOOLS";
             const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
             return installer.default(installer[extension], forceDownload).then(resolve, reject);
         }
@@ -23,15 +23,15 @@ function installExtension() {
 
 }
 // Quit when all windows are closed.
-app.on('window-all-closed', function() {
+app.on("window-all-closed", () => {
     // On OS X it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') {
+    if (process.platform !== "darwin") {
         app.quit();
     }
 });
 
-app.on('activate', function() {
+app.on("activate", () => {
     if (!application) {
         return;
     }
@@ -44,12 +44,12 @@ app.on('activate', function() {
     }
 });
 
-app.on('ready', function() {
+app.on("ready", () => {
     // Get template for default menu
     const menu = defaultMenu(app, shell);
     // Set top-level application menu, using modified template
     Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === "development") {
         installExtension().then(() => {
             startRenderApp();
         });

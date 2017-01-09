@@ -33,15 +33,15 @@ export default class InitializeUseCase extends UseCase {
             debug("load textlintrc", filePath);
             const newApp = TextlintAppFactory.create({
                 directory: defaultWorkspaceDirectory,
-                textlintrc: new Textlintrc({content, filePath}),
+                textlintrc: new Textlintrc({content, filePath})
             });
             this.textlintAppRepository.save(newApp);
         }).catch(error => {
             debug("Not found textlintrc", error);
             const newApp = TextlintAppFactory.create({
-                directory: defaultWorkspaceDirectory,
+                directory: defaultWorkspaceDirectory
             });
             this.textlintAppRepository.save(newApp);
-        })
+        });
     }
 }

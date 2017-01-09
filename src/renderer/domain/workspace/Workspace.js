@@ -1,7 +1,7 @@
 // MIT © 2017 azu
 "use strict";
 const path = require("path");
-import Textlintrc from "./textlintrc/Textlintrc"
+import Textlintrc from "./textlintrc/Textlintrc";
 export default class Workspace {
     /**
      * @type {Textlintrc}

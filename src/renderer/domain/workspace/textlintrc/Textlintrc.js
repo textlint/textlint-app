@@ -26,7 +26,7 @@ export default class Textlintrc {
         if (Validator.validate(content)) {
             this._jsonValue = JSON.parse(stripJsonComments(content));
         } else {
-            this._jsonValue = {}
+            this._jsonValue = {};
         }
     }
 
