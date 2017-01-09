@@ -48,8 +48,8 @@ export default class TextlintEditor extends React.Component {
 
     /**
      *
-     * @param textlintrcFilePath
-     * @param nodeModulesDirectory
+     * @param {string} textlintrcFilePath
+     * @param {string} nodeModulesDirectory
      * @returns {function()}
      * @private
      */
@@ -63,7 +63,7 @@ export default class TextlintEditor extends React.Component {
             }
             const validator = createValidator({textlintrcFilePath, nodeModulesDirectory});
             validator(text).then(results => {
-                debug(results);
+                debug(`Found ${results.length} Errors`);
                 callback(results);
             }).catch(error => {
                 debug(error);
