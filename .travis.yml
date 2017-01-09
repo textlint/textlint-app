@@ -1,6 +1,9 @@
 sudo: false
 language: node_js
 node_js: "stable"
+install:
+- yarn install
+- npm run bootstrap
 script:
 - npm test
 - $(npm bin)/lerna run test
