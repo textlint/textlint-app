@@ -27,6 +27,34 @@
     "watch": "npm-run-all clean --parallel watch:*",
     "clean": "rimraf public/build && mkdirp public/build"
   },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {},
+      "electronWinstallerConfig": {
+        "name": ""
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": ""
+      }
+    }
+  },
   "keywords": [
     "textlint",
     "electron",
@@ -57,6 +85,8 @@
     "css-loader": "^0.26.1",
     "electron": "^1.4.13",
     "electron-devtools-installer": "^2.0.1",
+    "electron-forge": "^2.5.2",
+    "electron-prebuilt-compile": "1.4.13",
     "electron-webpack-plugin": "^1.2.2",
     "json-loader": "^0.5.4",
     "lerna": "2.0.0-beta.31",
@@ -72,8 +102,7 @@
     "power-assert": "^1.4.2",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
-    "webpack": "beta",
-    "webpack-dev-server": "beta"
+    "webpack": "beta"
   },
   "dependencies": {
     "almin": "^0.9.1",
@@ -83,6 +112,7 @@
     "codemirror": "^5.22.0",
     "codemirror-textlint": "^1.1.0",
     "debug": "^2.6.0",
+    "electron-compile": "^5.1.2",
     "electron-window-state": "^4.0.1",
     "map-like": "^1.0.3",
     "normalize.css": "^5.0.0",
@@ -93,6 +123,7 @@
     "strip-json-comments": "^2.0.1",
     "textlint": "^7.2.1",
     "textlint-app-locator": "file:packages/textlint-app-locator",
+    "textlint-app-textlint-to-codemirror": "file:packages/textlint-app-textlint-to-codemirror",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-filter-rule-whitelist": "^1.0.2",
     "textlint-rule-eslint": "^1.2.0",
