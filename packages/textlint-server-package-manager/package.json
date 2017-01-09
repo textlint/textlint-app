@@ -1,0 +1,47 @@
+{
+  "directories": {
+    "test": "test"
+  },
+  "author": "azu",
+  "license": "MIT",
+  "files": [
+    "bin/",
+    "lib/",
+    "src/"
+  ],
+  "name": "textlint-server-package-manager",
+  "version": "1.2.1",
+  "description": "textlint app server for npm",
+  "main": "lib/textlint-server-package-manager.js",
+  "scripts": {
+    "test": "mocha test/",
+    "build": "NODE_ENV=production babel src --out-dir lib --source-maps",
+    "watch": "babel src --out-dir lib --watch --source-maps",
+    "prepublish": "npm run --if-present build"
+  },
+  "keywords": [
+    "textlint-app"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/packages/textlint-server-package-manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/packages/textlint-server-package-manager/issues"
+  },
+  "homepage": "https://github.com/packages/textlint-server-package-manager",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-jsdoc-to-assert": "^4.0.0",
+    "babel-preset-power-assert": "^1.0.0",
+    "babel-register": "^6.18.0",
+    "mocha": "^3.2.0",
+    "power-assert": "^1.4.2"
+  },
+  "dependencies": {
+    "@azu/npm-programmatic": "^0.1.1",
+    "mkdirp": "^0.5.1",
+    "textlintrc-to-pacakge-list": "^1.2.0"
+  }
+}

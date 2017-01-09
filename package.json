@@ -16,7 +16,6 @@
   "scripts": {
     "test": "mocha test/",
     "bootstrap": "lerna bootstrap",
-    "prepublish": "npm run bootstrap && npm run --if-present build",
     "start": "npm-run-all clean --parallel watch:*",
     "electron": "electron .",
     "build:js": "cross-env NODE_ENV=production webpack --progress -p",
@@ -79,15 +78,25 @@
     "almin": "^0.9.1",
     "almin-logger": "^3.0.0",
     "almin-reduce-store": "^1.0.1",
+    "classnames": "^2.2.5",
     "codemirror": "^5.22.0",
     "electron-window-state": "^4.0.1",
     "map-like": "^1.0.3",
     "normalize.css": "^5.0.0",
+    "office-ui-fabric-react": "^0.85.0",
     "react": "^15.4.1",
     "react-codemirror": "^0.3.0",
     "react-dom": "^15.4.1",
     "strip-json-comments": "^2.0.1",
     "textlint-app-locator": "file:packages/textlint-app-locator",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-filter-rule-whitelist": "^1.0.2",
+    "textlint-rule-eslint": "^1.2.0",
+    "textlint-rule-ja-no-redundant-expression": "^1.0.3",
+    "textlint-rule-no-js-function-paren": "^1.0.1",
+    "textlint-rule-preset-ja-technical-writing": "^0.1.3",
+    "textlint-rule-prh": "^3.1.2",
+    "textlint-server-package-manager": "file:packages/textlint-server-package-manager",
     "textlintrc-to-pacakge-list": "^1.2.0"
   }
 }

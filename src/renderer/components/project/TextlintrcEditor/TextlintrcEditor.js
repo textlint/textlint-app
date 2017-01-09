@@ -1,11 +1,12 @@
 // MIT © 2017 azu
 "use strict";
 const React = require("react");
+const classnamaes = require("classnames");
 const CodeMirror = require('react-codemirror');
 require('codemirror/lib/codemirror.css');
 require('codemirror/mode/yaml/yaml');
 export default class TextlintrcEditor extends React.Component {
-    static propsType = {
+    static propTypes = {
         value: React.PropTypes.string,
         onChange: React.PropTypes.func
     };
@@ -15,8 +16,11 @@ export default class TextlintrcEditor extends React.Component {
             lineNumbers: true,
             mode: 'yaml',
         };
-        return <CodeMirror value={this.props.value}
-                           onChange={this.props.onChange}
-                           options={options}/>
+        const className = classnamaes("TextlintrcEditor", this.props.className);
+        return <div className={className}>
+            <CodeMirror value={this.props.value}
+                        onChange={this.props.onChange}
+                        options={options}/>
+        </div>
     }
 }

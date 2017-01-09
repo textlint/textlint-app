@@ -1,0 +1,25 @@
+{
+  "directories": {
+    "test": "test"
+  },
+  "author": "azu",
+  "license": "MIT",
+  "private": true,
+  "files": [
+    "lib/"
+  ],
+  "name": "textlint-app-locator",
+  "version": "1.0.0",
+  "description": "Service Locator for textlint-app",
+  "main": "lib/textlint-app-locator.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/packages/textlint-app-locator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/packages/textlint-app-locator/issues"
+  },
+  "homepage": "https://github.com/packages/textlint-app-locator"
+}

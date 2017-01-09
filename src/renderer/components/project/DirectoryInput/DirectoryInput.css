@@ -1,0 +1,14 @@
+.DirectoryInput {
+    display: flex;
+}
+
+/* align with bottom */
+.DirectoryInput-textField {
+    width: 100%;
+    margin: 0 !important;
+}
+
+.DirectoryInput-submitButton {
+    width: 30px;
+    align-self: flex-end;
+}

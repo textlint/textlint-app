@@ -9,8 +9,11 @@ export default class TextlintApp {
      */
     id;
 
-    constructor() {
+    /**
+     * @param {Workspaces} workspaces
+     */
+    constructor(workspaces) {
         this.id = new TextlintAppId();
-        this.workspaces = new Workspaces();
+        this.workspaces = workspaces;
     }
 }

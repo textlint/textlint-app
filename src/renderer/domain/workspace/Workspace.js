@@ -8,10 +8,17 @@ export default class Workspace {
     textlintrc;
 
     /**
-     * @param {Textlintrc} textlintrc
+     * @type {string}
      */
-    constructor({textlintrc}) {
+    directory;
+
+    /**
+     * @param {Textlintrc} textlintrc
+     * @param {string} directory
+     */
+    constructor({textlintrc, directory}) {
         this.textlintrc = textlintrc;
+        this.directory = directory;
     }
 
     /**

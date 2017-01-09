@@ -1,5 +1,8 @@
 // MIT © 2017 azu
 "use strict";
+// deps
+require("office-ui-fabric-react/dist/css/fabric.css");
+//
 import React from "react";
 import ReactDOM from "react-dom";
 // use-case

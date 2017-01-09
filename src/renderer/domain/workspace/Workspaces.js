@@ -1,7 +1,5 @@
 // MIT © 2017 azu
 "use strict";
-import Textlintrc from "./textlintrc/Textlintrc";
-import EmptyTextlintrc from "./textlintrc/EmptyTextlintrc";
 import Workspace from "./Workspace";
 export default class Workspaces {
     /**
@@ -16,10 +14,13 @@ export default class Workspaces {
      */
     _current;
 
-    constructor() {
-        this._current = new Workspace({
-            textlintrc: new EmptyTextlintrc()
-        });
+
+    /**
+     * @param {Workspace} workspace
+     */
+    constructor(workspace) {
+        // default workspace use empty textlintrc
+        this._current = workspace;
     }
 
     /**

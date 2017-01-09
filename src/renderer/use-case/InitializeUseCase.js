@@ -1,8 +1,11 @@
 // MIT © 2017 azu
 "use strict";
+const remote = require("electron").remote;
+const app = remote.app;
+const path = require("path");
 import {UseCase} from "almin";
 // domain
-import TextlintApp from "../domain/TextlintApp";
+import TextlintAppFactory from "../domain/TextlintAppFactory";
 // repository
 import textlintAppRepository from "../infra/repository/TextlintAppRepository";
 export default class InitializeUseCase extends UseCase {
@@ -21,7 +24,8 @@ export default class InitializeUseCase extends UseCase {
     }
 
     execute() {
-        const newApp = new TextlintApp();
+        const defaultWorkspaceDirectory = path.join(app.getPath("userData"), "textlint/default");
+        const newApp = TextlintAppFactory.create(defaultWorkspaceDirectory);
         this.textlintAppRepository.save(newApp);
     }
 }
