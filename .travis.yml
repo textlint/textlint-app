@@ -1,8 +1,7 @@
 sudo: false
 language: node_js
 node_js: "stable"
-install:
-- yarn install
+after_install:
 - npm run bootstrap
 script:
 - npm test
