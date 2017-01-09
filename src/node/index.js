@@ -1,6 +1,8 @@
 // MIT © 2017 azu
 "use strict";
-import {app, protocol} from "electron";
+
+const defaultMenu = require('electron-default-menu');
+import {Menu, app, shell} from "electron";
 import Application from "./Application";
 let application = null;
 function startRenderApp() {
@@ -43,6 +45,10 @@ app.on('activate', function() {
 });
 
 app.on('ready', function() {
+    // Get template for default menu
+    const menu = defaultMenu(app, shell);
+    // Set top-level application menu, using modified template
+    Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
     if (process.env.NODE_ENV === 'development') {
         installExtension().then(() => {
             startRenderApp();

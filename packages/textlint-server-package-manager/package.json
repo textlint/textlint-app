@@ -11,7 +11,7 @@
     "src/"
   ],
   "name": "textlint-server-package-manager",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "textlint app server for npm",
   "main": "lib/textlint-server-package-manager.js",
   "scripts": {
@@ -41,7 +41,7 @@
     "power-assert": "^1.4.2"
   },
   "dependencies": {
-    "@azu/npm-programmatic": "^0.1.1",
+    "@azu/npm-programmatic": "^0.2.0",
     "mkdirp": "^0.5.1",
     "textlintrc-to-pacakge-list": "^1.2.0"
   }

@@ -9,11 +9,10 @@
     "lib/"
   ],
   "name": "textlint-app-locator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Service Locator for textlint-app",
   "main": "lib/textlint-app-locator.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/packages/textlint-app-locator.git"

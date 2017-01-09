@@ -111,6 +111,7 @@
     "codemirror": "^5.22.0",
     "codemirror-textlint": "^1.1.0",
     "debug": "^2.6.0",
+    "electron-default-menu": "^1.0.0",
     "electron-window-state": "^4.0.1",
     "map-like": "^1.0.3",
     "normalize.css": "^5.0.0",
