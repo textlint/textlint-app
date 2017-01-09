@@ -1,6 +1,11 @@
 # textlint-app
 
-textlint app for crossplatform.
+textlint app for cross platform.
+
+## Why?
+
+- No need Node.js/npm
+- Simply download binary and launch app.
 
 ## Install
 
