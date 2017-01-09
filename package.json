@@ -26,7 +26,7 @@
     "watch:js": "cross-env NODE_ENV=development webpack -d --watch",
     "watch:css": "chokidar --initial 'src/**/*.css' -c 'cross-env NODE_ENV=development postcss --config postcss.config.js'",
     "watch": "npm-run-all clean --parallel watch:*",
-    "clean": "rimraf public/build dist/ && mkdirp public/build",
+    "clean": "rimraf app/build dist/ out/ && mkdirp app/build",
     "pack": "npm run build && build --dir",
     "dist": "npm run build && build",
     "release": "npm run build && build"
