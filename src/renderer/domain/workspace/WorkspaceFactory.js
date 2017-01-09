@@ -3,9 +3,14 @@
 import Workspace from "./Workspace";
 import EmptyTextlintrc from "./textlintrc/EmptyTextlintrc";
 export default class WorkspaceFactory {
-    static create({directory}) {
+    /**
+     * @param {string} directory
+     * @param {Textlintrc} [textlintrc]
+     * @returns {Workspace}
+     */
+    static create({directory, textlintrc}) {
         return new Workspace({
-            textlintrc: new EmptyTextlintrc(),
+            textlintrc: textlintrc ? textlintrc : new EmptyTextlintrc(),
             directory
         });
     }

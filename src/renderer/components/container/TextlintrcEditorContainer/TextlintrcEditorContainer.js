@@ -15,45 +15,10 @@ export default class TextlintrcEditorContainer extends React.Component {
         super();
 
         this.state = {
-            textValue: `{
-  "filters": {
-    "comments": true,
-    "whitelist": {
-      "allow": [
-        "/{{[a-zA-Z.]*?}}/",
-        "と考えるかもしれません"
-      ]
-    }
-  },
-  "rules": {
-    "ja-no-redundant-expression": true,
-    "no-js-function-paren": {
-      "allow": [
-        "Symbol"
-      ]
-    },
-    "preset-ja-technical-writing": {
-      "no-exclamation-question-mark": {
-        "allowFullWidthQuestion": true
-      }
-    },
-    "eslint": {
-      "configFile": "./config/markdown.eslintrc.js"
-    },
-    "prh": {
-      "rulePaths": [
-        "prh.yml"
-      ]
-    }
-  }
-}
-`
+            textValue: ""
         };
         this.onClickInstall = (event) => {
-            const textValue = this.state.textValue;
-            locator.context.useCase(UpdateTextlintrcUseCase.create()).execute(textValue).then(() => {
-                return locator.context.useCase(InstallTextlintPackageUseCase.create()).execute();
-            })
+            return locator.context.useCase(InstallTextlintPackageUseCase.create()).execute();
         };
         this.onChangeValue = (value) => {
             locator.context.useCase(UpdateTextlintrcUseCase.create()).execute(value);
@@ -76,7 +41,7 @@ export default class TextlintrcEditorContainer extends React.Component {
             <DirectoryInput defaultDir={workingDirectory} onSubmit={this.onSubmitDirectory}/>
             <TextlintrcEditor
                 className="TextlintrcEditorContainer-editor"
-                value={this.state.textValue}
+                value={textlintrcEditor.textValue}
                 onChange={this.onChangeValue}
             />
             <InstallButton onClick={this.onClickInstall}/>

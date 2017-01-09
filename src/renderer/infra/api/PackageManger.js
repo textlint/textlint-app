@@ -11,6 +11,21 @@ export default class PackageManger {
          * @type {TextlintPackageManger}
          */
         const manager = new ServerPackageManager(workspace.directory);
+        console.log("install", workspace);
         return manager.install(workspace.textlintrc.textValue);
+    }
+
+    /**
+     * @param {string} directory
+     * @returns {Promise.<{content:string, filePath:string}>}
+     */
+    static getTextlinrc(directory) {
+        const manager = new ServerPackageManager(directory);
+        return manager.getTextlintrc().then(content => {
+            return {
+                content,
+                filePath: manager.textlintrcFilePath
+            }
+        });
     }
 }

@@ -22,9 +22,11 @@ export default class Textlintrc {
 
     constructor({content, filePath}) {
         this.filePath = filePath;
-        this._textValue = content;
+        this.content = content;
         if (Validator.validate(content)) {
             this._jsonValue = JSON.parse(stripJsonComments(content));
+        } else {
+            this._jsonValue = {}
         }
     }
 
@@ -32,7 +34,7 @@ export default class Textlintrc {
      * @returns {String|null}
      */
     get textValue() {
-        return this._textValue;
+        return this.content;
     }
 
     /**

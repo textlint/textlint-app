@@ -1,5 +1,6 @@
 // MIT © 2017 azu
 "use strict";
+const path = require("path");
 import Textlintrc from "./textlintrc/Textlintrc"
 export default class Workspace {
     /**
@@ -19,6 +20,7 @@ export default class Workspace {
     constructor({textlintrc, directory}) {
         this.textlintrc = textlintrc;
         this.directory = directory;
+        this.modulesDirectory = path.join(directory, "node_modules");
     }
 
     /**

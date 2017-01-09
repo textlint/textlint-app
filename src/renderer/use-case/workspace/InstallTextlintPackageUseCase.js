@@ -4,7 +4,7 @@ import {UseCase} from "almin";
 // repository
 import textlintAppRepository from "../../infra/repository/TextlintAppRepository";
 // api
-import npmAPI from "../../infra/api/npm-api";
+import PackageManger from "../../infra/api/PackageManger";
 export default class InstallTextlintPackageUseCase extends UseCase {
     static create() {
         return new InstallTextlintPackageUseCase({
@@ -29,7 +29,7 @@ export default class InstallTextlintPackageUseCase extends UseCase {
     execute() {
         const app = this.textlintAppRepository.lastUsed();
         this.dispatch({type: InstallTextlintPackageUseCase.Events.beginInstall});
-        return npmAPI.install(app.workspaces.current).then(() => {
+        return PackageManger.install(app.workspaces.current).then(() => {
             this.dispatch({type: InstallTextlintPackageUseCase.Events.successInstall});
         }).catch(error => {
             this.dispatch({type: InstallTextlintPackageUseCase.Events.failureInstall});

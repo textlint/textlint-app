@@ -17,6 +17,7 @@ export class TextlintrcEditorState extends ReduceState {
         super();
         this.workspace = workspace;
         this.workingDirectory = workspace.directory;
+        this.modulesDirectory = workspace.modulesDirectory;
         // textlintrc
         this.textlintrc = textlintrc;
         this.isValid = textlintrc.isValid;
