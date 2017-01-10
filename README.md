@@ -17,7 +17,7 @@ Install with [npm](https://www.npmjs.com/):
 
     npm install
     npm run bootstrap
-    npm start
+    npm run watch
     npm run electron
 
 ## Changelog
