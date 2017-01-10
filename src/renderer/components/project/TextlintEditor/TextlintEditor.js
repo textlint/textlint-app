@@ -86,7 +86,7 @@ export default class TextlintEditor extends React.Component {
         if (this._CodeMirror) {
             const codeMirror = this._CodeMirror.getCodeMirror();
             codeMirror.getScrollerElement().style.minHeight = "30em";
-            // Workaround
+            // Workaround for IME position
             // https://github.com/codemirror/CodeMirror/issues/4089
             // https://github.com/BoostIO/Boostnote/commit/8f1c198406d68ef7818a84f4201c6df446e14592
             codeMirror.getInputField().style.marginBottom = "-2em";
