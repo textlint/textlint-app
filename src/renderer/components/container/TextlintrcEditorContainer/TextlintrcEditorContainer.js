@@ -20,9 +20,6 @@ export default class TextlintrcEditorContainer extends React.Component {
     constructor() {
         super();
 
-        this.state = {
-            textValue: ""
-        };
         this.onClickInstall = event => {
             return locator.context.useCase(InstallTextlintPackageUseCase.create()).execute();
         };
@@ -42,7 +39,7 @@ export default class TextlintrcEditorContainer extends React.Component {
         const workingDirectory = textlintrcEditor.workingDirectory;
         const message = textlintrcEditor.isLoading ? "ロード中" : "";
         return <div className="TextlintrcEditorContainer">
-            <h1 className="TextlintrcEditorContainer-title ms-font-su ms-fontColor-themePrimary">.textlintrc editor</h1>
+            <h1 className="TextlintrcEditorContainer-title ms-font-xxl ms-fontColor-themePrimary">.textlintrc</h1>
             <MessageNotification>{message}</MessageNotification>
             <DirectoryInput defaultDir={workingDirectory} onSubmit={this.onSubmitDirectory}/>
             <TextlintrcEditor

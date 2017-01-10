@@ -4,7 +4,7 @@ const React = require("react");
 const classnamaes = require("classnames");
 const CodeMirror = require("react-codemirror");
 require("codemirror/lib/codemirror.css");
-require("codemirror/mode/yaml/yaml");
+require("codemirror/mode/javascript/javascript");
 export default class TextlintrcEditor extends React.Component {
     static propTypes = {
         className: React.PropTypes.string,
@@ -12,15 +12,29 @@ export default class TextlintrcEditor extends React.Component {
         onChange: React.PropTypes.func
     };
 
+    constructor() {
+        super();
+        this.state = {
+            textValue: ""
+        };
+    }
+
+    componentWillReceiveProps(props) {
+        if (this.state.textValue !== props.value) {
+            this.setState({
+                textValue: props.value
+            });
+        }
+    }
+
     render() {
         const options = {
             lineNumbers: true,
-            mode: "yaml"
+            mode: "javascript"
         };
         const className = classnamaes("TextlintrcEditor", this.props.className);
         return <div className={className}>
-            <CodeMirror
-value={this.props.value}
+            <CodeMirror value={this.state.textValue}
                         onChange={this.props.onChange}
                         options={options}/>
         </div>;

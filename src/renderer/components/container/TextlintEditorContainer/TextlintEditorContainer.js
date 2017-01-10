@@ -14,9 +14,12 @@ export default class TextlintEditorContainer extends React.Component {
          * @type {TextlintrcEditorState}
          */
         const textlintrcEditor = this.props.textlintrcEditor;
-        return <TextlintEditor
-            textlintrcFilePath={textlintrcEditor.filePath}
-            modulesDirectory={textlintrcEditor.modulesDirectory}
-        />;
+        return <div className="TextlintEditorContainer">
+            <h1 className="TextlintEditorContainer-title ms-font-xxl ms-fontColor-themePrimary">Edit with textlint</h1>
+            <TextlintEditor
+                textlintrcFilePath={textlintrcEditor.filePath}
+                modulesDirectory={textlintrcEditor.modulesDirectory}
+            />
+        </div>;
     }
 }

@@ -188,7 +188,8 @@ module.exports = {
         "no-allow-react-context/no-allow-react-context": [
             2, {
                 "except": [
-                    "**/components/container/**/*.js"
+                    "**/components/container/**/*.js",
+                    "**/components/pages/**/*.js"
                 ]
             }
         ]
