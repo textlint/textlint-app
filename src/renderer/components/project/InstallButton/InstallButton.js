@@ -1,5 +1,6 @@
 // MIT © 2017 azu
 "use strict";
+import i18next from 'i18next';
 const React = require("react");
 import {Button, ButtonType} from "office-ui-fabric-react";
 export default class InstallButton extends React.Component {
@@ -13,7 +14,7 @@ export default class InstallButton extends React.Component {
             icon="Download"
             buttonType={ButtonType.primary}
             onClick={this.props.onClick}>
-            Install
+            {i18next.t("Install")}
         </Button>;
     }
 }

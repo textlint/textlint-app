@@ -6,6 +6,10 @@ html, body, #js-app {
     padding: 0;
 }
 
+body {
+    font-family: var(--font-family--base);
+}
+
 * {
     box-sizing: border-box;
 }

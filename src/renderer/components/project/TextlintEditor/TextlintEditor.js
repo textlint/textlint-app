@@ -1,5 +1,6 @@
 // MIT © 2017 azu
 "use strict";
+import i18next from 'i18next';
 // node
 const remote = require("electron").remote;
 const createValidator = remote.require("textlint-app-textlint-to-codemirror");
@@ -37,12 +38,12 @@ export default class TextlintEditor extends React.Component {
          */
         this._CodeMirror = null;
         this.state = {
-            textValue: `# Usage
+            textValue: i18next.t(`# Usage
 
 1. Setting .textlintrc. (Go to \`.textlintrc\` tab)
 2. Install textlint rules via .textlintrc. (In \`.textlintrc\` tab)
 3. Write Texts and Lint! (Here!)
-`
+`)
         };
         this.updateValue = this._updateValue.bind(this);
         this.validator = this._createValidator();

@@ -1,4 +1,10 @@
 :root {
     --App-navi--padding-left: 0.5rem;
     --App-pading: 1rem;
+
+    /* font family  */
+    /* Gothic */
+    --font-family--base: Avenir, "Open Sans", "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "ヒラギノ角ゴ Pro W6", "Hiragino Kaku Gothic Pro", "Meiryo UI", "メイリオ", Meiryo, "MS Ｐゴシック", "MS PGothic", sans-serif;
+    /* serif */
+    --font-family---serif: sans-serif;
 }

@@ -1,6 +1,7 @@
 // MIT © 2017 azu
 "use strict";
 const React = require("react");
+import i18next from 'i18next';
 import {
     TextField,
     Button,
@@ -35,7 +36,7 @@ export default class DirectoryInput extends React.Component {
             this.props.onSubmit(this.state.value);
         };
         return <div className="DirectoryInput">
-            <Label>You can set .textlintrc working directory.</Label>
+            <Label>{i18next.t("You can set .textlintrc working directory.")}</Label>
             <div className="DirectoryInput-main">
                 <TextField
                     className='DirectoryInput-textField'
@@ -48,7 +49,7 @@ export default class DirectoryInput extends React.Component {
                     className="DirectoryInput-submitButton"
                     buttonType={ ButtonType.normal }
                     onClick={submit}>
-                    Load
+                    {i18next.t("Load")}
                 </Button>
             </div>
         </div>;
