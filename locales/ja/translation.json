@@ -1,0 +1,6 @@
+{
+  "Set working directory if needed.(Default: use textlint-app working dir)": "必要ならばワーキングディレクトリを変更します。(デフォルトではtextlint-appのものが使われます)",
+  "Write .textlintrc configuration": ".textlintrcの設定を行います。",
+  "Install textlint rules from the .textlintrc configuration.(Press \"Install\" button)": ".textlintrcの設定を元にtextlintのルールをインストールします。",
+  "You can set .textlintrc working directory.": ".textlintrcファイルがあるワーキングディレクトリを設定できます。"
+}
