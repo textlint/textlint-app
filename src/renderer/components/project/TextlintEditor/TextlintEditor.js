@@ -37,14 +37,19 @@ export default class TextlintEditor extends React.Component {
          */
         this._CodeMirror = null;
         this.state = {
-            textValue: ""
+            textValue: `# Usage
+
+1. Setting .textlintrc. (Go to \`.textlintrc\` tab)
+2. Install textlint rules via .textlintrc. (In \`.textlintrc\` tab)
+3. Write Texts and Lint! (Here!)
+`
         };
         this.updateValue = this._updateValue.bind(this);
         this.validator = this._createValidator();
     }
 
     jumpToPos({line, ch}) {
-        if(!this._CodeMirror){
+        if (!this._CodeMirror) {
             return;
         }
         const codeMirror = this._CodeMirror.getCodeMirror();

@@ -17,8 +17,9 @@ export default class TextlintAppFactor {
             textlintrc
         });
         const workspaces = new Workspaces(workspace);
+        const usage = "";
         const textlintEditor = new TextlintEditor(new TextlintEditorContentNoFile({
-            text: ""
+            text: usage
         }));
         return new TextlintApp({workspaces, textlintEditor});
     }

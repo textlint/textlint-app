@@ -1,5 +1,6 @@
 // MIT © 2017 azu
 "use strict";
+const debug = require("debug")("textlint-app:PackageManger");
 const remote = require("electron").remote;
 const ServerPackageManager = remote.require("textlint-server-package-manager");
 export default class PackageManger {
@@ -11,7 +12,7 @@ export default class PackageManger {
          * @type {TextlintPackageManger}
          */
         const manager = new ServerPackageManager(workspace.directory);
-        console.log("install", workspace);
+        debug("Installing from ", manager.textlintrcFilePath);
         return manager.install(workspace.textlintrc.textValue);
     }
 
@@ -27,5 +28,18 @@ export default class PackageManger {
                 filePath: manager.textlintrcFilePath
             };
         });
+    }
+
+    /**
+     * Check integrity between .textlintrc and installed module
+     * @param {string} directory
+     * @returns {Promise.<Boolean>}
+     */
+    static checkIntegrity(directory) {
+        /**
+         * @type {TextlintPackageManger}
+         */
+        const manager = new ServerPackageManager(directory);
+        return manager.checkIntegrity();
     }
 }

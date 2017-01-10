@@ -9,8 +9,8 @@
 .App-nav {
     flex: 2 1 auto;
     max-width: 10%;
-    padding-left: 0.5rem;
     background-color: #333;
+    padding-left: var(--App-navi--padding-left);
 }
 
 .App-main {

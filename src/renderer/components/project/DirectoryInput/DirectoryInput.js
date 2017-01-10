@@ -2,10 +2,10 @@
 "use strict";
 const React = require("react");
 import {
-    TextField
-} from "office-ui-fabric-react";
-import {
-    Button
+    TextField,
+    Button,
+    ButtonType,
+    Label
 } from "office-ui-fabric-react";
 export default class DirectoryInput extends React.Component {
     static propTypes = {
@@ -35,14 +35,22 @@ export default class DirectoryInput extends React.Component {
             this.props.onSubmit(this.state.value);
         };
         return <div className="DirectoryInput">
-            <TextField
-                className='DirectoryInput-textField'
-                label="Setting Directory"
-                value={this.state.value}
-                defaultValue={this.props.defaultDir}
-                onChanged={this._onChanged}
-            />
-            <Button className="DirectoryInput-submitButton" onClick={submit}>決定</Button>
+            <Label>You can set .textlintrc working directory.</Label>
+            <div className="DirectoryInput-main">
+                <TextField
+                    className='DirectoryInput-textField'
+                    label="Working directory"
+                    value={this.state.value}
+                    defaultValue={this.props.defaultDir}
+                    onChanged={this._onChanged}
+                />
+                <Button
+                    className="DirectoryInput-submitButton"
+                    buttonType={ ButtonType.normal }
+                    onClick={submit}>
+                    Load
+                </Button>
+            </div>
         </div>;
     }
 }

@@ -40,6 +40,11 @@ export default class TextlintrcEditorContainer extends React.Component {
         const message = textlintrcEditor.isLoading ? "ロード中" : "";
         return <div className="TextlintrcEditorContainer">
             <h1 className="TextlintrcEditorContainer-title ms-font-xxl ms-fontColor-themePrimary">.textlintrc</h1>
+            <ol className="TextlintrcEditorContainer-usage">
+                <li>Set working directory if needed.(Default: use textlint-app working dir)</li>
+                <li>Write .textlintrc configuration</li>
+                <li>Install rules from the .textlintrc configuration.(Press "Install" button)</li>
+            </ol>
             <MessageNotification>{message}</MessageNotification>
             <DirectoryInput defaultDir={workingDirectory} onSubmit={this.onSubmitDirectory}/>
             <TextlintrcEditor

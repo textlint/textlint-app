@@ -8,7 +8,6 @@ const locator = require("textlint-app-locator");
 import TextlintEditor from "../../project/TextlintEditor/TextlintEditor";
 import FileToolbar from "../../project/FileToolbar/FileToolbar";
 import LintResultList from "../../project/LintResultList/LintResultList";
-import LintResultListItem from "../../project/LintResultList/LintResultListItem";
 // state
 import {TextlintEditorState} from "../../../store/TextlintEditor/TextlintEditorStore";
 import {TextlintrcEditorState} from "../../../store/TextlintrcEditor/TextlintrcEditorStore";
@@ -71,7 +70,7 @@ export default class TextlintEditorContainer extends React.Component {
     createMenuItems({onOpenFile}) {
         return [
             {
-                name: 'Open New File',
+                name: 'Open File',
                 key: 'OpenFile',
                 icon: 'OpenFile',
                 onClick: onOpenFile,
@@ -96,6 +95,7 @@ export default class TextlintEditorContainer extends React.Component {
                 onClick: this.onClickLintItem.bind(this, lintError)
             });
         });
+        window.title = "test";
         return <div className="TextlintEditorContainer">
             <div className="TextlintEditorContainer-wrapper">
                 <div className="TextlintEditorContainer-header">

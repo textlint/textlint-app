@@ -1,4 +1,4 @@
-.DirectoryInput {
+.DirectoryInput-main {
     display: flex;
 }
 
@@ -9,6 +9,5 @@
 }
 
 .DirectoryInput-submitButton {
-    width: 30px;
     align-self: flex-end;
 }

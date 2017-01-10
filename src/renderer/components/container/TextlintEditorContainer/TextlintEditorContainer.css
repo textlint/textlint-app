@@ -50,6 +50,7 @@
 .TextlintEditorContainer-mainResult {
     flex: 1 1 auto;
     max-width: 15%;
+    min-width: 10%;
     height: 100%;
     color: white;
     background-color: #333;

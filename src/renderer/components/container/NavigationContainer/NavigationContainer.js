@@ -3,6 +3,7 @@
 const React = require("react");
 const classnames = require("classnames");
 import {Nav} from "office-ui-fabric-react";
+import TextlintLogo from "../../project/TextlintLogo/TextlintLogo";
 export default class NavigationContainer extends React.Component {
     static contextTypes = {
         router: React.PropTypes.object
@@ -37,7 +38,9 @@ export default class NavigationContainer extends React.Component {
         ];
         return (
             <div className={className}>
+                <TextlintLogo className="NavigationContainer-logo"/>
                 <Nav
+                    className="NavigationContainer-nav"
                     groups={groups}
                     expandedStateText={"expanded"}
                     collapsedStateText={"collapsed"}
