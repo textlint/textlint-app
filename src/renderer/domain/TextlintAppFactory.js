@@ -1,6 +1,8 @@
 // MIT © 2017 azu
 "use strict";
 import TextlintApp from "./TextlintApp";
+import TextlintEditor from "./textlint-editor/TextlintEditor";
+import TextlintEditorContentNoFile from "./textlint-editor/TextlintEditorContentNoFile";
 import Workspaces from "./workspace/Workspaces";
 import WorkspaceFactory from "./workspace/WorkspaceFactory";
 export default class TextlintAppFactor {
@@ -15,6 +17,9 @@ export default class TextlintAppFactor {
             textlintrc
         });
         const workspaces = new Workspaces(workspace);
-        return new TextlintApp(workspaces);
+        const textlintEditor = new TextlintEditor(new TextlintEditorContentNoFile({
+            text: ""
+        }));
+        return new TextlintApp({workspaces, textlintEditor});
     }
 }

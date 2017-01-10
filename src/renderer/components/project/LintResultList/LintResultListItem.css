@@ -1,0 +1,19 @@
+.LintResultListItem {
+    font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    font-weight: 400;
+    box-sizing: border-box;
+    margin: 0;
+    box-shadow: none;
+    padding: 9px 28px 3px;
+    position: relative;
+    display: block;
+}
+
+.LintResultListItem:hover {
+    background-color: #555;
+    cursor: pointer;
+    outline: 1px solid transparent;
+}
+

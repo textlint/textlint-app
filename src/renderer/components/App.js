@@ -1,7 +1,6 @@
 // MIT © 2017 azu
 "use strict";
 const React = require("react");
-const locator = require("textlint-app-locator");
 //
 import {Router, hashHistory, Route} from "react-router";
 // page

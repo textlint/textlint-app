@@ -1,2 +1,71 @@
 .TextlintEditorContainer {
+    height: 100%;
+}
+
+.TextlintEditorContainer-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    height: 100%;
+    max-height: 100%;
+}
+
+.TextlintEditorContainer-wrapper > * {
+    flex: 1 1 auto;
+}
+
+/* <Title> | <Toolbar>  */
+.TextlintEditorContainer-header {
+    display: flex;
+    flex-flow: row;
+}
+
+.TextlintEditorContainer-title {
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.TextlintEditorContainer-toolbar {
+    flex: 1;
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.TextlintEditorContainer-wrapper .TextlintEditor {
+    height: 100%;
+}
+
+/* Editor | Result */
+.TextlintEditorContainer-main {
+    display: flex;
+    flex-flow: row;
+    height: 100%;
+}
+
+.TextlintEditor {
+    flex: 4 1 auto;
+    max-width: calc(100% - 15%);
+}
+
+.TextlintEditorContainer-mainResult {
+    flex: 1 1 auto;
+    max-width: 15%;
+    height: 100%;
+    color: white;
+    background-color: #333;
+}
+
+/* height auto */
+.TextlintEditorContainer .ReactCodeMirror {
+    height: 100%;
+}
+
+/* list */
+.TextlintEditorContainer-mainResult {
+    padding-left: 0.5rem;
+}
+
+.TextlintEditorContainer-mainResultList {
+    padding-left: 0;
+    font-size: 12px;
 }

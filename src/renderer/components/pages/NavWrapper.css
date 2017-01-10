@@ -7,12 +7,14 @@
 }
 
 .App-nav {
-    width: 20%;
+    flex: 1 1 auto;
+    max-width: 15%;
     padding-left: 0.5rem;
     background-color: #333;
 }
 
 .App-main {
-    width: 100%;
-    padding: 1rem;
+    flex: 5 1 auto;
+    max-width: 85%;
+    height: 100%;
 }

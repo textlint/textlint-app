@@ -3,10 +3,14 @@
 import {StoreGroup} from "almin";
 import textlintAppRepository from "../infra/repository/TextlintAppRepository";
 import TextlintrcEditorStore from "./TextlintrcEditor/TextlintrcEditorStore";
+import TextlintEditorStore from "./TextlintEditor/TextlintEditorStore";
 export default class AppStore {
     static create() {
         return new StoreGroup([
             new TextlintrcEditorStore({
+                textlintAppRepository
+            }),
+            new TextlintEditorStore({
                 textlintAppRepository
             })
         ]);
