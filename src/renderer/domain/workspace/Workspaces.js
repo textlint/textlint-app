@@ -31,6 +31,13 @@ export default class Workspaces {
     }
 
     /**
+     * @param {Workspace} workspace
+     */
+    set current(workspace) {
+        this._current = workspace;
+    }
+
+    /**
      * @param {Workspace} aWorkspace
      * @returns {boolean}
      */
@@ -54,5 +61,13 @@ export default class Workspaces {
             return;
         }
         this._workspaces.push(workspace);
+    }
+
+    /**
+     * @param {Workspace} workspace
+     */
+    useWorkspace(workspace) {
+        this.addWorkspace(workspace);
+        this.current = workspace;
     }
 }
