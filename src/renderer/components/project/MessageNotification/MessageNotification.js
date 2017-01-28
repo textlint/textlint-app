@@ -8,7 +8,7 @@ import {
 } from "office-ui-fabric-react";
 export default class MessageNotification extends React.Component {
     static propTypes = {
-        children: React.PropTypes.string
+        children: React.PropTypes.element
     };
 
     render() {

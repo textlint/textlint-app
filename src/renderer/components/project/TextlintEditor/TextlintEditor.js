@@ -139,7 +139,7 @@ export default class TextlintEditor extends React.Component {
         textlintrcFilePath,
         nodeModulesDirectory
     } = {}) {
-        console.log(textlintrcFilePath, nodeModulesDirectory);
+        debug("textlintrcFilePath", textlintrcFilePath, "nodeModulesDirectory", nodeModulesDirectory);
         if (!textlintrcFilePath || !nodeModulesDirectory) {
             return (text, callback) => {
                 callback([]);

@@ -3,6 +3,7 @@
 import {UseCase} from "almin";
 // repository
 import textlintAppRepository from "../../infra/repository/TextlintAppRepository";
+import ReloadCurrentWorkspaceUseCase from "./ReloadCurrentWorkspaceUseCase";
 // api
 import PackageManger from "../../infra/api/PackageManger";
 export default class InstallTextlintPackageUseCase extends UseCase {
@@ -31,6 +32,8 @@ export default class InstallTextlintPackageUseCase extends UseCase {
         this.dispatch({type: InstallTextlintPackageUseCase.Events.beginInstall});
         return PackageManger.install(app.workspaces.current).then(() => {
             this.dispatch({type: InstallTextlintPackageUseCase.Events.successInstall});
+        }).then(() => {
+            return this.context.useCase(ReloadCurrentWorkspaceUseCase.create()).execute();
         }).catch(error => {
             this.dispatch({type: InstallTextlintPackageUseCase.Events.failureInstall});
             return Promise.reject(error);

@@ -6,11 +6,10 @@ import {UseCase} from "almin";
 import WorkspaceFactory from "../../domain/workspace/WorkspaceFactory";
 import Textlintrc from "../../domain/workspace/textlintrc/Textlintrc";
 import PackageManger from "../../infra/api/PackageManger";
+import textlintAppRepository from "../../infra/repository/TextlintAppRepository";
 // repository
 export default class UpdateWorkspaceDirectoryUseCase extends UseCase {
-    static create({
-        textlintAppRepository
-    }) {
+    static create() {
         return new this({textlintAppRepository});
     }
 

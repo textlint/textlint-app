@@ -176,10 +176,6 @@ module.exports = {
         "react/no-danger": 0,
         "react/prop-types": 1,
         "react/forbid-prop-types": 2,
-        "react/jsx-first-prop-new-line": [
-            1,
-            "multiline"
-        ],
         "no-allow-react-context/no-allow-react-context": [
             2, {
                 "except": [

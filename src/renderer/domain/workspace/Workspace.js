@@ -18,9 +18,7 @@ export default class Workspace {
      * @param {string} directory
      */
     constructor({textlintrc, directory}) {
-        this.textlintrc = textlintrc;
-        this.directory = directory;
-        this.modulesDirectory = path.join(directory, "node_modules");
+        this.update({textlintrc, directory});
     }
 
     /**
@@ -29,6 +27,16 @@ export default class Workspace {
      */
     openNewTextlintrc({filePath, content}) {
         this.textlintrc = new Textlintrc({filePath, content});
+    }
+
+    /**
+     * @param {Textlintrc} textlintrc
+     * @param {string} directory
+     */
+    update({textlintrc, directory}) {
+        this.textlintrc = textlintrc;
+        this.directory = directory;
+        this.modulesDirectory = path.join(directory, "node_modules");
     }
 
     /**

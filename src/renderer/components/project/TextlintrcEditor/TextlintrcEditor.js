@@ -37,9 +37,9 @@ export default class TextlintrcEditor extends React.Component {
         return <div className={className}>
             <Label>.textlintrc configuration</Label>
             <CodeMirror
-value={this.state.textValue}
-                        onChange={this.props.onChange}
-                        options={options}/>
+                value={this.state.textValue}
+                onChange={this.props.onChange}
+                options={options}/>
         </div>;
     }
 }

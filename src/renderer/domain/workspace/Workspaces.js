@@ -6,7 +6,7 @@ export default class Workspaces {
      * @type {Workspace[]}
      * @private
      */
-    _workspaces;
+    _workspaces = [];
 
     /**
      * @type {Workspace}
@@ -57,9 +57,6 @@ export default class Workspaces {
      * @param {Workspace} workspace
      */
     addWorkspace(workspace) {
-        if (this.hasAlreadyOpened(workspace)) {
-            return;
-        }
         this._workspaces.push(workspace);
     }
 
@@ -67,7 +64,9 @@ export default class Workspaces {
      * @param {Workspace} workspace
      */
     useWorkspace(workspace) {
-        this.addWorkspace(workspace);
+        if (!this.hasAlreadyOpened(workspace)) {
+            this.addWorkspace(workspace);
+        }
         this.current = workspace;
     }
 }

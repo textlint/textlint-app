@@ -7,9 +7,11 @@ import TextlintrcEditor from "../../project/TextlintrcEditor/TextlintrcEditor";
 import InstallButton from "../../project/InstallButton/InstallButton";
 import DirectoryInput from "../../project/DirectoryInput/DirectoryInput";
 import MessageNotification from "../../project/MessageNotification/MessageNotification";
+import {Spinner, SpinnerType} from "office-ui-fabric-react";
 // use-case
 import InstallTextlintPackageUseCase from "../../../use-case/workspace/InstallTextlintPackageUseCase";
 import UpdateTextlintrcUseCase from "../../../use-case/textlintrc/UpdateTextlintrcUseCase";
+import UpdateWorkspaceDirectoryUseCase from "../../../use-case/workspace/UpdateWorkspaceDirectoryUseCase";
 // state
 import {TextlintrcEditorState} from "../../../store/TextlintrcEditor/TextlintrcEditorStore";
 export default class TextlintrcEditorContainer extends React.Component {
@@ -27,8 +29,10 @@ export default class TextlintrcEditorContainer extends React.Component {
         this.onChangeValue = value => {
             locator.context.useCase(UpdateTextlintrcUseCase.create()).execute(value);
         };
-        this.onSubmitDirectory = value => {
-            console.log(value);
+        this.onSubmitDirectory = workingDirectory => {
+            if (workingDirectory) {
+                locator.context.useCase(UpdateWorkspaceDirectoryUseCase.create()).execute(workingDirectory);
+            }
         };
     }
 
@@ -38,7 +42,10 @@ export default class TextlintrcEditorContainer extends React.Component {
          */
         const textlintrcEditor = this.props.textlintrcEditor;
         const workingDirectory = textlintrcEditor.workingDirectory;
-        const message = textlintrcEditor.isLoading ? "Loading..." : "";
+        const message = textlintrcEditor.isLoading
+            ? <Spinner type={ SpinnerType.large }
+                       label='Installing...'/>
+            : null;
         return <div className="TextlintrcEditorContainer">
             <h1 className="TextlintrcEditorContainer-title ms-font-xxl ms-fontColor-themePrimary">.textlintrc</h1>
             <ol className="TextlintrcEditorContainer-usage">
@@ -53,7 +60,10 @@ export default class TextlintrcEditorContainer extends React.Component {
                 value={textlintrcEditor.textValue}
                 onChange={this.onChangeValue}
             />
-            <InstallButton onClick={this.onClickInstall}/>
+            <InstallButton
+                disabled={textlintrcEditor.isLoading}
+                onClick={this.onClickInstall}
+            />
         </div>;
     }
 }
