@@ -110,6 +110,7 @@ export default class TextlintEditorContainer extends React.Component {
                         ref={c => this.TextlintEditor = c }
                         className="TextlintEditorContainer-mainEditor"
                         value={textlintEditor.textContent}
+                        defaultValue={textlintEditor.textContent}
                         onChange={this.onChangeTextlintEditor}
                         onLintError={this.onLintError}
                         textlintrcFilePath={textlintrcEditor.filePath}

@@ -26,6 +26,7 @@ export default class TextlintEditor extends React.Component {
         modulesDirectory: React.PropTypes.string,
         textlintrcFilePath: React.PropTypes.string,
         value: React.PropTypes.string,
+        defaultValue: React.PropTypes.string,
         onChange: React.PropTypes.func,
         onLintError: React.PropTypes.func
     };
@@ -111,6 +112,7 @@ export default class TextlintEditor extends React.Component {
             <CodeMirror
                 ref={c => this._CodeMirror = c }
                 value={this.state.textValue}
+                defaultValue={this.props.defaultValue}
                 onChange={this.updateValue}
                 options={options}/>
         </div>;
@@ -125,6 +127,7 @@ export default class TextlintEditor extends React.Component {
             this.setState({
                 textValue: value
             });
+            this.props.onChange(value);
         }
     }
 
@@ -148,7 +151,6 @@ export default class TextlintEditor extends React.Component {
         const validator = createValidator({textlintrcFilePath, nodeModulesDirectory});
         let isLinting = false;
         return (text, callback) => {
-            console.log("Txt", text);
             if (!text) {
                 callback([]);
                 return;
