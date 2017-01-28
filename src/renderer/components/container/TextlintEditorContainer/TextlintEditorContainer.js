@@ -14,6 +14,8 @@ import {TextlintrcEditorState} from "../../../store/TextlintrcEditor/TextlintrcE
 // use-case
 import OpenNewFileUseCase from "../../../use-case/textlint-editor/OpenNewFileUseCase.js";
 import UpdateTextUseCase from "../../../use-case/textlint-editor/UpdateTextUseCase";
+import FixTextUseCase from "../../../use-case/textlint-editor/FixTextUseCase";
+import {Button, ButtonType} from "office-ui-fabric-react";
 export default class TextlintEditorContainer extends React.Component {
     static propTypes = {
         textlintEditor: React.PropTypes.instanceOf(TextlintEditorState).isRequired,
@@ -65,6 +67,9 @@ export default class TextlintEditorContainer extends React.Component {
                 });
             }
         };
+        this.onClickFixErrors = () => {
+            locator.context.useCase(FixTextUseCase.create()).execute();
+        };
     }
 
     /**
@@ -110,6 +115,10 @@ export default class TextlintEditorContainer extends React.Component {
                 onClick: this.onClickLintItem.bind(this, lintError)
             };
         });
+        const includesFixableMessage = messages.some(message => message.isFixable);
+        const fixButton = includesFixableMessage
+            ? <Button onClick={this.onClickFixErrors}>Fix all errors</Button>
+            : null;
         return <div className="TextlintEditorContainer">
             <div className="TextlintEditorContainer-wrapper">
                 <div className="TextlintEditorContainer-header">
@@ -132,10 +141,12 @@ export default class TextlintEditorContainer extends React.Component {
                     />
                     <div className="TextlintEditorContainer-mainResult">
                         <h2 className="TextlintEditorContainer-mainResultTitle ms-font-l">Lint Errors</h2>
+                        {fixButton}
                         <LintResultList items={messages}/>
                     </div>
                 </div>
             </div>
-        </div>;
+        </div>
+            ;
     }
 }

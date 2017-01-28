@@ -4,9 +4,10 @@ import i18next from "i18next";
 // node
 const remote = require("electron").remote;
 const textlintToCodeMirror = require("textlint-message-to-codemirror");
-const TextLintEngine = remote.require("textlint").TextLintEngine;
 const debug = require("debug")("textlint-app:TextlintEditor");
 const debounce = require("lodash.debounce");
+// infra
+import TextlintAPI from "../../../infra/textlint/TextlintAPI";
 // main
 const React = require("react");
 const CodeMirror = require("react-codemirror");
@@ -64,22 +65,23 @@ export default class TextlintEditor extends React.Component {
         if (this.state.textValue !== nextState.textValue) {
             return true;
         }
+
         if (this.props.value !== nextProps.value) {
             return true;
         }
         return false;
     }
 
-    componentWillReceiveProps(props) {
-        if (this.props.value !== props.value) {
-            this._updateValue(props.value);
+    componentWillReceiveProps(nextProps) {
+        if (this.props.value !== nextProps.value) {
+            this._updateValue(nextProps.value);
         }
-        if (this.props.textlintrcFilePath !== props.textlintrcFilePath ||
-            this.props.modulesDirectory !== props.nodeModulesDirectory
+        if (this.props.textlintrcFilePath !== nextProps.textlintrcFilePath ||
+            this.props.modulesDirectory !== nextProps.modulesDirectory
         ) {
             this.validator = debounce(this._createValidator({
-                textlintrcFilePath: props.textlintrcFilePath,
-                nodeModulesDirectory: props.modulesDirectory
+                textlintrcFilePath: nextProps.textlintrcFilePath,
+                nodeModulesDirectory: nextProps.modulesDirectory
             }), 300);
         }
     }
@@ -94,6 +96,10 @@ export default class TextlintEditor extends React.Component {
             codeMirror.getInputField().style.marginBottom = "-2em";
             codeMirror.refresh();
         }
+        this.validator = debounce(this._createValidator({
+            textlintrcFilePath: this.props.textlintrcFilePath,
+            nodeModulesDirectory: this.props.modulesDirectory
+        }), 300);
     }
 
     render() {
@@ -149,7 +155,7 @@ export default class TextlintEditor extends React.Component {
                 callback([]);
             };
         }
-        const engine = new TextLintEngine({
+        const textlintAPI = new TextlintAPI({
             configFile: textlintrcFilePath,
             rulesBaseDirectory: nodeModulesDirectory
         });
@@ -163,14 +169,8 @@ export default class TextlintEditor extends React.Component {
                 return;
             }
             isLinting = true;
-            engine.executeOnText(text, ".md").then(results => {
+            textlintAPI.lintText(text, ".md").then(lintMessages => {
                 isLinting = false;
-                const lintMessages = [];
-                results.forEach(result => {
-                    result.messages.forEach(message => {
-                        lintMessages.push(message);
-                    });
-                });
                 debug(`Found ${lintMessages.length} Errors`);
                 const lintErrors = lintMessages.map(textlintToCodeMirror);
                 this.props.onLintError({

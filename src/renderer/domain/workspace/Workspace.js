@@ -21,6 +21,12 @@ export default class Workspace {
         this.update({textlintrc, directory});
     }
 
+    get isSetupTextlint() {
+        return this.textlintrc.filePath !== undefined &&
+            this.directory !== undefined &&
+            this.modulesDirectory !== undefined;
+    }
+
     /**
      * @param {string} filePath
      * @param {string} content
