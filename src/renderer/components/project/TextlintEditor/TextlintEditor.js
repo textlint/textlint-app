@@ -1,6 +1,6 @@
 // MIT © 2017 azu
 "use strict";
-import i18next from 'i18next';
+import i18next from "i18next";
 // node
 const remote = require("electron").remote;
 const createValidator = remote.require("textlint-app-textlint-to-codemirror");
@@ -109,7 +109,7 @@ export default class TextlintEditor extends React.Component {
         };
         return <div className="TextlintEditor">
             <CodeMirror
-                ref={(c) => this._CodeMirror = c }
+                ref={c => this._CodeMirror = c }
                 value={this.state.textValue}
                 onChange={this.updateValue}
                 options={options}/>
@@ -139,16 +139,19 @@ export default class TextlintEditor extends React.Component {
         textlintrcFilePath,
         nodeModulesDirectory
     } = {}) {
+        console.log(textlintrcFilePath, nodeModulesDirectory);
         if (!textlintrcFilePath || !nodeModulesDirectory) {
             return (text, callback) => {
                 callback([]);
-            }
+            };
         }
         const validator = createValidator({textlintrcFilePath, nodeModulesDirectory});
         let isLinting = false;
         return (text, callback) => {
+            console.log("Txt", text);
             if (!text) {
-                return callback([]);
+                callback([]);
+                return;
             }
             if (isLinting) {
                 return;
@@ -169,10 +172,10 @@ export default class TextlintEditor extends React.Component {
                         },
                         message: result.message,
                         severity: result.severity
-                    }
+                    };
                 });
-                callback(copiedResults);
                 this.props.onLintError(copiedResults);
+                callback(copiedResults);
             }).catch(error => {
                 debug(error);
             });

@@ -1,6 +1,6 @@
 // MIT © 2017 azu
 "use strict";
-import i18next from 'i18next';
+import i18next from "i18next";
 const React = require("react");
 import {Button, ButtonType} from "office-ui-fabric-react";
 export default class InstallButton extends React.Component {

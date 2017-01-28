@@ -8,11 +8,15 @@ import {CommandBar} from "office-ui-fabric-react";
  * @returns {XML}
  * @constructor
  */
-export default function FileToolbar({items =[], farItems = []}) {
+export default function FileToolbar({items = [], farItems = []}) {
     return <CommandBar
         className="FileToolbar"
         isSearchBoxVisible={ false }
         items={items}
         farItems={farItems}
-    />
+    />;
 }
+FileToolbar.PropTypes = {
+    items: React.PropTypes.array,
+    farItems: React.PropTypes.array
+};

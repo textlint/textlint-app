@@ -1,9 +1,9 @@
 // MIT © 2017 azu
 "use strict";
 const React = require("react");
-const {dialog} = require('electron').remote;
+const {dialog} = require("electron").remote;
 const debounce = require("lodash.debounce");
-const markdownExtensions = require('markdown-extensions');
+const markdownExtensions = require("markdown-extensions");
 const locator = require("textlint-app-locator");
 import TextlintEditor from "../../project/TextlintEditor/TextlintEditor";
 import FileToolbar from "../../project/FileToolbar/FileToolbar";
@@ -29,23 +29,23 @@ export default class TextlintEditorContainer extends React.Component {
         this.state = {
             lintErrors: []
         };
-        this.onChangeTextlintEditor = (value) => {
-            locator.context.useCase(UpdateTextUseCase.create()).execute(value)
+        this.onChangeTextlintEditor = value => {
+            locator.context.useCase(UpdateTextUseCase.create()).execute(value);
         };
-        this.onLintError = (results) => {
+        this.onLintError = results => {
             this.setState({
                 lintErrors: results
             });
         };
-        this.onClickOpenFile = (event) => {
+        this.onClickOpenFile = event => {
             const options = {
-                title: 'Open File for linting',
+                title: "Open File for linting",
                 filters: [
-                    {name: 'Markdown', extensions: markdownExtensions},
+                    {name: "Markdown", extensions: markdownExtensions}
                 ],
-                properties: ['openFile']
+                properties: ["openFile"]
             };
-            dialog.showOpenDialog(options, function(filenames) {
+            dialog.showOpenDialog(options, filenames => {
                 if (filenames.length <= 0) {
                     return;
                 }
@@ -53,14 +53,14 @@ export default class TextlintEditorContainer extends React.Component {
                 locator.context.useCase(OpenNewFileUseCase.create()).execute(filename);
             });
         };
-        this.onClickLintItem = (lintError) => {
-          if(this.TextlintEditor) {
-              this.TextlintEditor.jumpToPos({
-                  line: lintError.from.line,
-                  ch: lintError.from.ch,
-              });
-          }
-        }
+        this.onClickLintItem = lintError => {
+            if(this.TextlintEditor) {
+                this.TextlintEditor.jumpToPos({
+                    line: lintError.from.line,
+                    ch: lintError.from.ch
+                });
+            }
+        };
     }
 
     /**
@@ -70,11 +70,11 @@ export default class TextlintEditorContainer extends React.Component {
     createMenuItems({onOpenFile}) {
         return [
             {
-                name: 'Open File',
-                key: 'OpenFile',
-                icon: 'OpenFile',
-                onClick: onOpenFile,
-            },
+                name: "Open File",
+                key: "OpenFile",
+                icon: "OpenFile",
+                onClick: onOpenFile
+            }
         ];
     }
 
@@ -107,7 +107,7 @@ export default class TextlintEditorContainer extends React.Component {
                 </div>
                 <div className="TextlintEditorContainer-main">
                     <TextlintEditor
-                        ref={(c) => this.TextlintEditor = c }
+                        ref={c => this.TextlintEditor = c }
                         className="TextlintEditorContainer-mainEditor"
                         value={textlintEditor.textContent}
                         onChange={this.onChangeTextlintEditor}

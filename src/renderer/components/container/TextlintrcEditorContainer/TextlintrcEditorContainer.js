@@ -1,7 +1,7 @@
 // MIT © 2017 azu
 "use strict";
 const React = require("react");
-import i18next from 'i18next';
+import i18next from "i18next";
 const locator = require("textlint-app-locator");
 import TextlintrcEditor from "../../project/TextlintrcEditor/TextlintrcEditor";
 import InstallButton from "../../project/InstallButton/InstallButton";
@@ -44,7 +44,7 @@ export default class TextlintrcEditorContainer extends React.Component {
             <ol className="TextlintrcEditorContainer-usage">
                 <li>{i18next.t("Set working directory if needed.(Default: use textlint-app working dir)")}</li>
                 <li>{i18next.t("Write .textlintrc configuration")}</li>
-                <li>{i18next.t(`Install textlint rules from the .textlintrc configuration.(Press "Install" button)`)}</li>
+                <li>{i18next.t("Install textlint rules from the .textlintrc configuration.(Press \"Install\" button)")}</li>
             </ol>
             <MessageNotification>{message}</MessageNotification>
             <DirectoryInput defaultDir={workingDirectory} onSubmit={this.onSubmitDirectory}/>

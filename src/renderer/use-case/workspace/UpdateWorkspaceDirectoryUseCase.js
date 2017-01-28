@@ -1,12 +1,12 @@
 // MIT © 2017 azu
 "use strict";
+const debug = require("debug")("textlint-app:UpdateWorkspaceDirectoryUseCase");
 import {UseCase} from "almin";
 // domain
-import WorkspaceFactory from "../../domain/workspace/WorkspaceFactory"
-import Textlintrc from "../../domain/workspace/textlintrc/Textlintrc"
+import WorkspaceFactory from "../../domain/workspace/WorkspaceFactory";
+import Textlintrc from "../../domain/workspace/textlintrc/Textlintrc";
 import PackageManger from "../../infra/api/PackageManger";
 // repository
-import textlintAppRepository from "../../infra/repository/TextlintAppRepository";
 export default class UpdateWorkspaceDirectoryUseCase extends UseCase {
     static create({
         textlintAppRepository
@@ -16,7 +16,7 @@ export default class UpdateWorkspaceDirectoryUseCase extends UseCase {
 
     constructor({textlintAppRepository}) {
         super();
-        this.textlintAppRepository = textlintAppRepository
+        this.textlintAppRepository = textlintAppRepository;
     }
 
     /**

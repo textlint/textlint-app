@@ -12,7 +12,7 @@ export default class LintResultList extends React.Component {
                     <LintResultListItem item={item}/>
                 )}
             />
-        </div>
+        </div>;
     }
 
 }

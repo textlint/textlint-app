@@ -16,9 +16,15 @@ export default class TextlintEditorPage extends React.Component {
     }
 
     componentWillMount() {
-        locator.context.onChange(() => {
+        this.releaseOnChage = locator.context.onChange(() => {
             this.setState(locator.context.getState());
         });
+    }
+
+    componentWillUnmount() {
+        if (this.releaseOnChage) {
+            this.releaseOnChage();
+        }
     }
 
     render() {

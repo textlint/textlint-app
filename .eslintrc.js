@@ -143,12 +143,6 @@ module.exports = {
         "prefer-reflect": 0,
         "prefer-spread": 2,
         "prefer-template": 2,
-        "react/jsx-no-bind": [
-            2,
-            {
-                "ignoreRefs": true
-            }
-        ],
         "require-yield": 2,
         "quotes": [
             2,
@@ -180,6 +174,7 @@ module.exports = {
         ],
         // React
         "react/no-danger": 0,
+        "react/prop-types": 1,
         "react/forbid-prop-types": 2,
         "react/jsx-first-prop-new-line": [
             1,

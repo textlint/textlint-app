@@ -17,9 +17,15 @@ export default class TextlintrcEditorPage extends React.Component {
     }
 
     componentWillMount() {
-        locator.context.onChange(() => {
+        this.releaseOnChage = locator.context.onChange(() => {
             this.setState(locator.context.getState());
         });
+    }
+
+    componentWillUnmount() {
+        if (this.releaseOnChage) {
+            this.releaseOnChage();
+        }
     }
 
     render() {

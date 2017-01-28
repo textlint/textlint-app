@@ -8,7 +8,7 @@ export class TextlintEditorState extends ReduceState {
     constructor({
         textlintEditor = {
             content: {}
-        },
+        }
     } = {}) {
         super();
         this.textlintEditor = textlintEditor;

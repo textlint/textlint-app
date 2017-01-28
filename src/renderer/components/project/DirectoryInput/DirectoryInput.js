@@ -1,7 +1,7 @@
 // MIT © 2017 azu
 "use strict";
 const React = require("react");
-import i18next from 'i18next';
+import i18next from "i18next";
 import {
     TextField,
     Button,

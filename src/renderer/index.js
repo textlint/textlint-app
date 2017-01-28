@@ -2,9 +2,9 @@
 "use strict";
 // deps
 require("office-ui-fabric-react/dist/css/fabric.css");
-import i18next from 'i18next';
+import i18next from "i18next";
 const remote = require("electron").remote;
-const LanguageDetector = remote.require('i18next-electron-language-detector');
+const LanguageDetector = remote.require("i18next-electron-language-detector");
 
 import React from "react";
 import ReactDOM from "react-dom";
