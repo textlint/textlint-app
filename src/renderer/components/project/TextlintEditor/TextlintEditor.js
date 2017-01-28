@@ -3,7 +3,8 @@
 import i18next from "i18next";
 // node
 const remote = require("electron").remote;
-const createValidator = remote.require("textlint-app-textlint-to-codemirror");
+const textlintToCodeMirror = require("textlint-message-to-codemirror");
+const TextLintEngine = remote.require("textlint").TextLintEngine;
 const debug = require("debug")("textlint-app:TextlintEditor");
 const debounce = require("lodash.debounce");
 // main
@@ -148,7 +149,10 @@ export default class TextlintEditor extends React.Component {
                 callback([]);
             };
         }
-        const validator = createValidator({textlintrcFilePath, nodeModulesDirectory});
+        const engine = new TextLintEngine({
+            configFile: textlintrcFilePath,
+            rulesBaseDirectory: nodeModulesDirectory
+        });
         let isLinting = false;
         return (text, callback) => {
             if (!text) {
@@ -159,25 +163,21 @@ export default class TextlintEditor extends React.Component {
                 return;
             }
             isLinting = true;
-            validator(text).then(results => {
+            engine.executeOnText(text, ".md").then(results => {
                 isLinting = false;
-                debug(`Found ${results.length} Errors`);
-                const copiedResults = results.map(result => {
-                    return {
-                        from: {
-                            line: result.from.line,
-                            ch: result.from.ch
-                        },
-                        to: {
-                            line: result.to.line,
-                            ch: result.to.ch
-                        },
-                        message: result.message,
-                        severity: result.severity
-                    };
+                const lintMessages = [];
+                results.forEach(result => {
+                    result.messages.forEach(message => {
+                        lintMessages.push(message);
+                    });
                 });
-                this.props.onLintError(copiedResults);
-                callback(copiedResults);
+                debug(`Found ${lintMessages.length} Errors`);
+                const lintErrors = lintMessages.map(textlintToCodeMirror);
+                this.props.onLintError({
+                    lintMessages,
+                    lintErrors
+                });
+                callback(lintErrors);
             }).catch(error => {
                 debug(error);
             });

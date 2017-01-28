@@ -27,14 +27,18 @@ export default class TextlintEditorContainer extends React.Component {
          */
         this.TextlintEditor = null;
         this.state = {
-            lintErrors: []
+            // codemirror error format
+            lintErrors: [],
+            // textlint message format
+            lintMessages: []
         };
         this.onChangeTextlintEditor = value => {
             locator.context.useCase(UpdateTextUseCase.create()).execute(value);
         };
-        this.onLintError = results => {
+        this.onLintError = ({lintErrors, lintMessages}) => {
             this.setState({
-                lintErrors: results
+                lintErrors,
+                lintMessages
             });
         };
         this.onClickOpenFile = event => {
@@ -54,7 +58,7 @@ export default class TextlintEditorContainer extends React.Component {
             });
         };
         this.onClickLintItem = lintError => {
-            if(this.TextlintEditor) {
+            if (this.TextlintEditor) {
                 this.TextlintEditor.jumpToPos({
                     line: lintError.from.line,
                     ch: lintError.from.ch
@@ -90,12 +94,22 @@ export default class TextlintEditorContainer extends React.Component {
         const items = this.createMenuItems({
             onOpenFile: this.onClickOpenFile
         });
-        const messages = this.state.lintErrors.map(lintError => {
-            return Object.assign({}, lintError, {
+        /**
+         * @type {LintResultListItemProps[]}
+         */
+        const messages = this.state.lintErrors.map((lintError, index) => {
+            /**
+             * @type {TextLintMessage}
+             */
+            const lintMessage = this.state.lintMessages[index];
+            return {
+                message: lintError.message,
+                startLine: lintError.from.line,
+                startCh: lintError.from.ch,
+                isFixable: lintMessage.fix !== undefined,
                 onClick: this.onClickLintItem.bind(this, lintError)
-            });
+            };
         });
-        window.title = "test";
         return <div className="TextlintEditorContainer">
             <div className="TextlintEditorContainer-wrapper">
                 <div className="TextlintEditorContainer-header">

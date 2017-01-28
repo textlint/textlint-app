@@ -1,0 +1,8 @@
+.LintResultListItem.is-fixable::before {
+    content: "✔";
+    color: green;
+    position: absolute;
+    left: 0.2rem;
+    top: 0.5rem;
+}
+
