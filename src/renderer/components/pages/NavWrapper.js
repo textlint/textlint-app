@@ -21,7 +21,7 @@ export default class NavWrapper extends React.Component {
             Component: TextlintEditorPage
         },
         {
-            name: "Settings .textlintrc",
+            name: "Settings",
             path: "/TextlintrcEditorPage",
             icon: "Settings",
             Component: TextlintrcEditorPage

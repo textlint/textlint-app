@@ -43,8 +43,8 @@ export default class TextlintEditor extends React.Component {
         this.state = {
             textValue: i18next.t(`# Usage
 
-1. Setting .textlintrc. (Go to \`.textlintrc\` tab)
-2. Install textlint rules via .textlintrc. (In \`.textlintrc\` tab)
+1. Setting .textlintrc. (Go to \`Settings\` tab)
+2. Install textlint rules via .textlintrc. (In \`Settings\` tab)
 3. Write Texts and Lint! (Here!)
 `)
         };
