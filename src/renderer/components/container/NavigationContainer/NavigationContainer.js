@@ -24,6 +24,7 @@ export default class NavigationContainer extends React.Component {
                 links: routes.map(route => {
                     return {
                         name: route.name,
+                        title: ">",
                         url: route.path,
                         key: route.path,
                         onClick: event => {

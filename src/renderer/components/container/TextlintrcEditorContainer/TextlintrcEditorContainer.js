@@ -44,7 +44,7 @@ export default class TextlintrcEditorContainer extends React.Component {
         const workingDirectory = textlintrcEditor.workingDirectory;
         const message = textlintrcEditor.isLoading
             ? <Spinner type={ SpinnerType.large }
-                       label='Installing...'/>
+                       label='Installing textlint rules...'/>
             : null;
         return <div className="TextlintrcEditorContainer">
             <h1 className="TextlintrcEditorContainer-title ms-font-xxl ms-fontColor-themePrimary">.textlintrc</h1>

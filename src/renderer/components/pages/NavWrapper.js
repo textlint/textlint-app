@@ -17,11 +17,13 @@ export default class NavWrapper extends React.Component {
         {
             name: "Edit with textlint",
             path: "/",
+            icon: "Edit",
             Component: TextlintEditorPage
         },
         {
-            name: ".textlintrc",
+            name: "Settings .textlintrc",
             path: "/TextlintrcEditorPage",
+            icon: "Settings",
             Component: TextlintrcEditorPage
         }
     ];
