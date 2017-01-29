@@ -16,7 +16,7 @@ Install with [npm](https://www.npmjs.com/):
 ## Usage
 
     npm install
-    npm run prepare
+    npm run bootstrap
     npm run watch
     npm run electron
 
