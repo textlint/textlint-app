@@ -26,7 +26,7 @@ export default function LintResultListItem({item}) {
     return (
         <div className={className} onClick={item.onClick}>
             <span className='ms-ListItem-tertiaryText'>{item.message}</span>
-            <span className='ms-ListItem-metaText'>@{`${item.startLine}:${item.startCh}`}</span>
+            <span className='LitResultLiteItem-metaText'>@{`${item.startLine}:${item.startCh}`}</span>
         </div>
     );
 }

@@ -6,7 +6,7 @@
     box-sizing: border-box;
     margin: 0;
     box-shadow: none;
-    padding: 9px 28px 3px;
+    padding: 9px 28px;
     position: relative;
     display: block;
     /* bottom line */
@@ -19,3 +19,11 @@
     outline: 1px solid transparent;
 }
 
+.LitResultLiteItem-metaText {
+    font-family: "Segoe UI WestEuropean", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    display: inline-block;
+    text-align: right;
+    font-size: 11px;
+    font-weight: 400;
+    color: #eff6fc;
+}
