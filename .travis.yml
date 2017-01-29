@@ -18,6 +18,10 @@ addons:
       - libgnome-keyring-dev
       - icnsutils
 
+install:
+- nvm install 6
+- npm install -g yarn
+- yarn install
 before_script:
 - npm run bootstrap
 script:
