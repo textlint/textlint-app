@@ -23,10 +23,7 @@ export default class TextlintAPI {
      * @returns {Promise.<TextLintMessage[]>}}
      */
     lintText(text, ext = ".md") {
-        return ipcPromise.send(Key.lintText, {text, ext}).then(messages => {
-            console.log(messages);
-            return messages;
-        });
+        return ipcPromise.send(Key.lintText, {text, ext});
     }
 
     /**
@@ -35,9 +32,7 @@ export default class TextlintAPI {
      * @returns {Promise.<TextLintFixResult>}}
      */
     fixText(text, ext = ".md") {
-        return ipcPromise.send(Key.fixText, {text, ext}).then(results => {
-            return results[0];
-        });
+        return ipcPromise.send(Key.fixText, {text, ext});
     }
 
     _flattenResultToMessages(results) {

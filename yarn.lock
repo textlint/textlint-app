@@ -3845,7 +3845,7 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-lerna@^2.0.0-beta.34:
+lerna@2.0.0-beta.34:
   version "2.0.0-beta.34"
   resolved "https://registry.yarnpkg.com/lerna/-/lerna-2.0.0-beta.34.tgz#c6e0103212f9acc8491a56c283b9ef6ba7717ea2"
   dependencies:
