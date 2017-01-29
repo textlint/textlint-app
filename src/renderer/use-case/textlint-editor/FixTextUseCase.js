@@ -26,7 +26,7 @@ export default class FixTextUseCase extends UseCase {
             configFile: currentWorkspace.textlintrc.filePath,
             rulesBaseDirectory: currentWorkspace.modulesDirectory
         });
-        return textlintAPI.fixText(app.textlintEditor.content.text, app.textlintEditor.content.fileExtension).then((result) => {
+        return textlintAPI.fixText(app.textlintEditor.content.text, app.textlintEditor.content.fileExtension).then(result => {
             app.textlintEditor.updateText(result.output);
             this.textlintAppRepository.save(app);
         });

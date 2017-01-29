@@ -4,6 +4,7 @@
 const defaultMenu = require("electron-default-menu");
 import {Menu, app, shell} from "electron";
 import Application from "./Application";
+import registerIPC from "./ipc/textlint-ipc";
 let application = null;
 function startRenderApp() {
     application = new Application();
@@ -56,4 +57,5 @@ app.on("ready", () => {
     } else {
         startRenderApp();
     }
+    registerIPC();
 });

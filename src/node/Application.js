@@ -5,7 +5,6 @@ import {BrowserWindow} from "electron";
 const url = require("url");
 import path from "path";
 import windowStateKeeper from "electron-window-state";
-const ipcMain = require("electron").ipcMain;
 export default class Application {
     get isDeactived() {
         return this.mainWindow === null;
@@ -31,7 +30,7 @@ export default class Application {
             height: mainWindowState.height
         });
         const index = {
-            html: `${__dirname}/app/index.html`
+            html: `/app/index.html`
         };
         const format = url.format({
             pathname: path.join(__dirname, "..", "index.html"),

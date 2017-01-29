@@ -1,7 +1,7 @@
 // MIT © 2017 azu
 "use strict";
-const remote = require("electron").remote;
-const textlint = remote.require("textlint");
+const ipcPromise = require("ipc-promise");
+import Key from "../../../node/ipc/textlint-ipc-key";
 export default class TextlintAPI {
     /**
      * @param {string} configFile path to config file
@@ -11,44 +11,10 @@ export default class TextlintAPI {
         configFile,
         rulesBaseDirectory
     }) {
-        this.configFile = configFile;
-        this.rulesBaseDirectory = rulesBaseDirectory;
-
-        /**
-         * @type {TextLintEngine}
-         * @private
-         */
-        this._textLintEngine = null;
-        /**
-         * @type {TextFixEngine}
-         * @private
-         */
-        this._textFixEngine = null;
-    }
-
-    get lintEngine() {
-        if (this._textLintEngine) {
-            return this._textLintEngine;
-        }
-        const textLineEngine = new textlint.TextLintEngine({
-            configFile: this.configFile,
-            rulesBaseDirectory: this.rulesBaseDirectory
+        ipcPromise.send(Key.setup, {
+            configFile,
+            rulesBaseDirectory
         });
-        this._textLintEngine = textLineEngine;
-        return textLineEngine;
-    }
-
-
-    get fixEngine() {
-        if (this._textFixEngine) {
-            return this._textFixEngine;
-        }
-        const textFixEngine = new textlint.TextFixEngine({
-            configFile: this.configFile,
-            rulesBaseDirectory: this.rulesBaseDirectory
-        });
-        this._textFixEngine = textFixEngine;
-        return textFixEngine;
     }
 
     /**
@@ -57,8 +23,9 @@ export default class TextlintAPI {
      * @returns {Promise.<TextLintMessage[]>}}
      */
     lintText(text, ext = ".md") {
-        return this.lintEngine.executeOnText(text, ext).then(results => {
-            return this._flattenResultToMessages(results);
+        return ipcPromise.send(Key.lintText, {text, ext}).then(messages => {
+            console.log(messages);
+            return messages;
         });
     }
 
@@ -68,7 +35,7 @@ export default class TextlintAPI {
      * @returns {Promise.<TextLintFixResult>}}
      */
     fixText(text, ext = ".md") {
-        return this.fixEngine.executeOnText(text, ext).then(results => {
+        return ipcPromise.send(Key.fixText, {text, ext}).then(results => {
             return results[0];
         });
     }
