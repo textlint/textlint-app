@@ -22,8 +22,6 @@ export default class TextlintAPI {
         if (this._textLintEngine) {
             return this._textLintEngine;
         }
-        console.log(this.configFile);
-        console.log(this.rulesBaseDirectory);
         const textLineEngine = new textlint.TextLintEngine({
             configFile: this.configFile,
             rulesBaseDirectory: this.rulesBaseDirectory
@@ -61,7 +59,7 @@ export default class TextlintAPI {
     /**
      * @param {string} text
      * @param {string} [ext]
-     * @returns {Promise.<TextLintMessage[]>}}
+     * @returns {Promise.<TextLintMessage[]>}
      */
     lintText(text, ext = ".md") {
         return this.lintEngine.executeOnText(text, ext).then(results => {
@@ -72,7 +70,7 @@ export default class TextlintAPI {
     /**
      * @param {string} text
      * @param {string} [ext]
-     * @returns {Promise.<TextLintFixResult>}}
+     * @returns {Promise.<TextLintFixResult>}
      */
     fixText(text, ext = ".md") {
         return this.fixEngine.executeOnText(text, ext).then(results => {
