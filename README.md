@@ -9,11 +9,11 @@ textlint app for cross platform.
 
 ## Install
 
-Install with [npm](https://www.npmjs.com/):
+- [ ] Download Binary
 
-    npm install textlint-app
+## Development
 
-## Usage
+You can install textlint-app in local enviroment.
 
     npm install
     npm run bootstrap
