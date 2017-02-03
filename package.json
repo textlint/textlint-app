@@ -54,6 +54,10 @@
           "path": "/Applications"
         }
       ]
+    },
+    "publish": {
+      "provider": "github",
+      "vPrefixedTagName": false
     }
   },
   "keywords": [
