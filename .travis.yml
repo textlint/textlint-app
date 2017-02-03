@@ -28,7 +28,7 @@ script:
 - npm test
 - $(npm bin)/lerna run test
 after_success:
-- test -n "$TRAVIS_TAG" && npm run release
+- npm run release
 
 branches:
   except:
