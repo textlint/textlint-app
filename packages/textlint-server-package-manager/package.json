@@ -16,7 +16,7 @@
   "main": "lib/textlint-server-package-manager.js",
   "scripts": {
     "test": "mocha test/",
-    "build": "NODE_ENV=production babel src --out-dir lib --source-maps",
+    "build": "cross-env NODE_ENV=production babel src --out-dir lib --source-maps",
     "watch": "babel src --out-dir lib --watch --source-maps",
     "prepublish": "npm run --if-present build"
   },
@@ -37,6 +37,7 @@
     "babel-preset-jsdoc-to-assert": "^4.0.0",
     "babel-preset-power-assert": "^1.0.0",
     "babel-register": "^6.18.0",
+    "cross-env": "^3.1.4",
     "mocha": "^3.2.0",
     "power-assert": "^1.4.2"
   },
