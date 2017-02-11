@@ -35,9 +35,7 @@
     "productName": "textlint",
     "appId": "info.efcl.textlint",
     "files": [
-      "index.js",
-      "app/**/*",
-      "node_modules/**/*"
+      "**/*"
     ],
     "mac": {
       "target": [
