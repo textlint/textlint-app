@@ -30,7 +30,11 @@ const node = {
             "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
         }),
         // textlint in node.js
-        new webpack.ExternalsPlugin("commonjs", ["textlint", "electron-updater"])
+        new webpack.ExternalsPlugin("commonjs", [
+            "textlint",
+            "electron-updater",
+            "electron-is-dev"
+        ])
     ],
     node: {
         __dirname: false,
