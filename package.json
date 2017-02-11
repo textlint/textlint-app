@@ -36,7 +36,7 @@
   "build": {
     "productName": "textlint",
     "appId": "info.efcl.textlint",
-    "category": "public.app-category.graphics-design",
+    "category": "public.app-category.utility",
     "files": [
       "index.js",
       "app",
@@ -57,7 +57,9 @@
       ]
     },
     "publish": [
-      "github"
+      {
+        "provider": "github"
+      }
     ]
   },
   "keywords": [
