@@ -15,14 +15,13 @@ init:
 install:
   - ps: Install-Product node 6 x64
   - git reset --hard HEAD
-  - npm install npm -g
-  - npm install electron-builder@next # force install next version to test electron-builder
-  - npm install
-  - npm prune
+  - npm install -g yarn
+  - yarn install
+  - npm run bootstrap
 
 build_script:
   - node --version
   - npm --version
-  - npm run dist
+  - DEBUG=electron-builder npm run release
 
 test: off
