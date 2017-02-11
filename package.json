@@ -29,7 +29,7 @@
     "_i18n:extract": "i18next src/renderer/ -o locales -l ja -r",
     "pack": "npm run build && build --dir",
     "dist": "npm run build && build",
-    "release": "npm run build && build --publish onTag"
+    "release": "npm run build && build --publish onTagOrDraft"
   },
   "build": {
     "productName": "textlint",
