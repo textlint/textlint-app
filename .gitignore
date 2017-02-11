@@ -82,7 +82,6 @@ crashlytics.properties
 crashlytics-build.properties
 
 
-/lib
 /app/build/
 /dist
 /out/

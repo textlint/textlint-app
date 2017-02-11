@@ -21,9 +21,9 @@ addons:
 install:
 - nvm install 6
 - npm install -g yarn
+- npm install -g lerna
+- lerna init && lerna exec yarn install
 - yarn install
-before_script:
-- npm run bootstrap
 script:
 - npm test
 - $(npm bin)/lerna run test

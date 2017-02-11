@@ -15,10 +15,10 @@ init:
 install:
   - ps: Install-Product node 6 x64
   - git reset --hard HEAD
-  - npm install -g yarn
   - npm install -g cross-env
+  - npm install -g lerna
+  - lerna init && lerna exec yarn install
   - yarn install
-  - npm run bootstrap
 
 build_script:
   - node --version
