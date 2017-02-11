@@ -17,7 +17,7 @@ install:
   - git reset --hard HEAD
   - npm install -g cross-env
   - npm install -g lerna
-  - lerna init && lerna exec --concurrency 1 yarn install
+  - lerna init && lerna exec -- yarn install --mutex file
   - yarn install
   - ./node_modules/.bin/install-app-deps
 
