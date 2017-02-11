@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
+// Node process
 const node = {
     entry: {
         "node": "./src/node/index.js"
@@ -29,13 +30,14 @@ const node = {
             "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
         }),
         // textlint in node.js
-        new webpack.ExternalsPlugin("commonjs", ["textlint"])
+        new webpack.ExternalsPlugin("commonjs", ["textlint", "electron-updater"])
     ],
     node: {
         __dirname: false,
         __filename: false
     }
 };
+// renderer process
 const renderer = {
     entry: {
         "renderer": "./src/renderer/index.js"
