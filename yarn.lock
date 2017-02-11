@@ -2312,6 +2312,10 @@ electron-download@^3.0.0, electron-download@^3.0.1:
     semver "^5.3.0"
     sumchecker "^1.2.0"
 
+electron-is-dev@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-0.1.2.tgz#8a1043e32b3a1da1c3f553dce28ce764246167e3"
+
 electron-macos-sign@~1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/electron-macos-sign/-/electron-macos-sign-1.6.0.tgz#56af59012dda368614222f9a3df2fd2fbe13ef31"
@@ -2356,6 +2360,17 @@ electron-packager@^8.5.1:
 electron-to-chromium@^1.2.1:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.2.2.tgz#e41bc9488c88e3cfa1e94bde28e8420d7d47c47c"
+
+electron-updater@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/electron-updater/-/electron-updater-1.6.1.tgz#42a63d96cd48c86d7d41f33ab9e50465f84f2291"
+  dependencies:
+    bluebird-lst-c "^1.0.6"
+    electron-builder-http "13.4.0"
+    fs-extra-p "^3.1.0"
+    js-yaml "^3.8.1"
+    semver "^5.3.0"
+    source-map-support "^0.4.11"
 
 electron-webpack-plugin@^1.2.2:
   version "1.2.2"
@@ -4413,11 +4428,11 @@ multipipe@^0.1.2:
   dependencies:
     duplexer2 "0.0.2"
 
-mute-stream@0.0.5, mute-stream@~0.0.4:
+mute-stream@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.5.tgz#8fbfabb0a98a253d3184331f9e8deb7372fac6c0"
 
-mute-stream@0.0.7:
+mute-stream@0.0.7, mute-stream@~0.0.4:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 

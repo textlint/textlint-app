@@ -5,6 +5,7 @@ import {BrowserWindow} from "electron";
 const url = require("url");
 import path from "path";
 import windowStateKeeper from "electron-window-state";
+import AppUpdater from "./electron/AppUpdater";
 export default class Application {
     get isDeactived() {
         return this.mainWindow === null;
@@ -48,6 +49,8 @@ export default class Application {
         if (process.env.NODE_ENV !== "production") {
             this.mainWindow.openDevTools();
         }
+
+        new AppUpdater();
     }
 
     show() {
