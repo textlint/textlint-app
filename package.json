@@ -9,7 +9,7 @@
     "src/"
   ],
   "name": "textlint-app",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "textlint app for crossplatform.",
   "main": "index.js",
   "scripts": {
