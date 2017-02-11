@@ -28,7 +28,7 @@ script:
 - npm test
 - $(npm bin)/lerna run test
 after_success:
-- npm run release
+- DEBUG=electron-builder npm run release
 
 branches:
   except:
