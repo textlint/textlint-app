@@ -16,12 +16,13 @@ install:
   - ps: Install-Product node 6 x64
   - git reset --hard HEAD
   - npm install -g yarn
+  - npm install -g cross-env
   - yarn install
   - npm run bootstrap
 
 build_script:
   - node --version
   - npm --version
-  - DEBUG=electron-builder npm run release
+  - cross-env DEBUG=electron-builder npm run release
 
 test: off
