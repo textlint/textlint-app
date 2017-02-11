@@ -1,4 +1,4 @@
-# textlint-app [![Build Status](https://travis-ci.org/textlint/textlint-app.svg?branch=master)](https://travis-ci.org/textlint/textlint-app)
+# textlint-app [![Build Status](https://travis-ci.org/textlint/textlint-app.svg?branch=master)](https://travis-ci.org/textlint/textlint-app) [![Build status](https://ci.appveyor.com/api/projects/status/mnburjdwu7vsva7t?svg=true)](https://ci.appveyor.com/project/azu/textlint-app)
 
 textlint app for cross platform.
 

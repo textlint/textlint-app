@@ -36,8 +36,8 @@
     "appId": "info.efcl.textlint",
     "files": [
       "index.js",
-      "app",
-      "node_modules"
+      "app/**/*",
+      "node_modules/**/*"
     ],
     "mac": {
       "target": [
@@ -153,7 +153,6 @@
     "suitcss-classnames": "^1.1.0",
     "textlint": "7.2.1-alpha.b8e5c85d",
     "textlint-app-locator": "file:packages/textlint-app-locator",
-    "textlint-app-textlint-to-codemirror": "file:packages/textlint-app-textlint-to-codemirror",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-filter-rule-whitelist": "^1.0.2",
     "textlint-message-to-codemirror": "^1.0.0",
