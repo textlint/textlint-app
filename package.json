@@ -39,7 +39,7 @@
     ],
     "mac": {
       "target": [
-        "dmg"
+        "zip"
       ],
       "icon": "build/icon.icns",
       "category": "public.app-category.productivity"
