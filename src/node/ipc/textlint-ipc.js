@@ -16,6 +16,7 @@ export default function registerIPC() {
             configFile,
             rulesBaseDirectory
         });
+        return Promise.resolve();
     });
     ipcPromise.on(Key.lintText, ({text, ext}) => {
         return apiServer.lintText(text, ext);

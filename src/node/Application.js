@@ -30,7 +30,7 @@ export default class Application {
             height: mainWindowState.height
         });
         const index = {
-            html: `/app/index.html`
+            html: "/app/index.html"
         };
         const format = url.format({
             pathname: path.join(__dirname, "..", "index.html"),
