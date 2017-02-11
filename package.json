@@ -35,6 +35,7 @@
     "productName": "textlint",
     "appId": "info.efcl.textlint",
     "asar": false,
+    "npmRebuild": false,
     "files": [
       "index.js",
       "app/**/*",
