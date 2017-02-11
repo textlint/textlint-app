@@ -34,6 +34,7 @@
     "release": "npm run build && build --publish onTag"
   },
   "build": {
+    "productName": "textlint",
     "appId": "info.efcl.textlint",
     "category": "public.app-category.graphics-design",
     "files": [
@@ -55,10 +56,9 @@
         }
       ]
     },
-    "publish": {
-      "provider": "github",
-      "vPrefixedTagName": true
-    }
+    "publish": [
+      "github"
+    ]
   },
   "keywords": [
     "textlint",
