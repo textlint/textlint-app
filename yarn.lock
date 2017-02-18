@@ -118,17 +118,19 @@ align-text@^0.1.1, align-text@^0.1.3:
     longest "^1.0.1"
     repeat-string "^1.5.2"
 
-almin-logger@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/almin-logger/-/almin-logger-3.0.0.tgz#8e3c3ee9077fa8c5afea1b2f3573be9914a02240"
+almin-logger@4.0.0-0:
+  version "4.0.0-0"
+  resolved "https://registry.yarnpkg.com/almin-logger/-/almin-logger-4.0.0-0.tgz#de82a1e861d6b0735d1dbc21a2172f629d15a96a"
+  dependencies:
+    map-like "^1.0.3"
 
 almin-reduce-store@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/almin-reduce-store/-/almin-reduce-store-1.0.2.tgz#bee4318a7d096bc026633370e8f6341fe48ee028"
 
-almin@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/almin/-/almin-0.9.1.tgz#8aa21bb02984700f27bd405a280c3c6407297d19"
+almin@0.10.0-0:
+  version "0.10.0-0"
+  resolved "https://registry.yarnpkg.com/almin/-/almin-0.10.0-0.tgz#7b2a7079af91906581443e4a3bd9ef1be4510ca7"
   dependencies:
     lru-map-like "^1.0.1"
     object-assign "^4.1.0"

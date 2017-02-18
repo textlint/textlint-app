@@ -27,7 +27,7 @@ function notify(title, message) {
 
 export default class AppUpdater {
     constructor() {
-        if (isDev()) {
+        if (isDev) {
             return;
         }
 
