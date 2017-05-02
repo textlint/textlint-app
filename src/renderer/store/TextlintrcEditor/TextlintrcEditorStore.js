@@ -67,9 +67,7 @@ export default class TextlintrcEditorStore extends ReduceStore {
     }
 
     getState() {
-        return {
-            textlintrcEditor: this.state
-        };
+        return this.state;
     }
 
     _onChange(textlintApp) {
