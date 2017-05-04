@@ -1,25 +1,12 @@
-const usePluginList = [
-    "postcss-easy-import",
-    "postcss-custom-properties",
-    "postcss-calc",
-    "postcss-custom-media",
-    "autoprefixer",
-    "postcss-reporter"
-];
 module.exports = {
-    "root": "./src/",
-    "use": usePluginList,
-    "input": "./src/renderer/index.css",
-    "output": "./app/build/bundle.css",
-    "local-plugins": true,
-    "postcss-easy-import": {
-        root: "./src/",
-        glob: true,
-        onImport: function (sources) {
-            global.watchCSS(sources, this.from);
-        }
-    },
-    "autoprefixer": {
-        "browsers": "> 5%"
+    "plugins": {
+        "postcss-easy-import": {},
+        "postcss-custom-properties": {},
+        "postcss-calc": {},
+        "postcss-custom-media": {},
+        "autoprefixer": {
+            "browsers": "> 5%"
+        },
+        "postcss-reporter": {}
     }
 };
