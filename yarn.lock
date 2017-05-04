@@ -47,7 +47,7 @@
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@microsoft/load-themed-styles/-/load-themed-styles-1.3.0.tgz#4f7e18d57131d4f082cd451b755040315907ea75"
 
-"@uifabric/utilities@>=1.1.0 <2.0.0":
+"@uifabric/utilities@>=1.8.4 <2.0.0":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-1.8.5.tgz#3299d34c3a0bc653a69955efb4cbcdb5ba4bd823"
 
@@ -5097,12 +5097,12 @@ object.omit@^2.0.0:
     for-own "^0.1.4"
     is-extendable "^0.1.1"
 
-office-ui-fabric-react@^1.6.0:
-  version "1.14.3"
-  resolved "https://registry.yarnpkg.com/office-ui-fabric-react/-/office-ui-fabric-react-1.14.3.tgz#2a0d1609724d850d4e99b81187ebd138d53d0ce1"
+office-ui-fabric-react@^2.24.2:
+  version "2.24.2"
+  resolved "https://registry.yarnpkg.com/office-ui-fabric-react/-/office-ui-fabric-react-2.24.2.tgz#2c1230c339476d80d592932f132bd9cd4f7b3de8"
   dependencies:
     "@microsoft/load-themed-styles" "^1.2.2"
-    "@uifabric/utilities" ">=1.1.0 <2.0.0"
+    "@uifabric/utilities" ">=1.8.4 <2.0.0"
 
 once@^1.3.0, once@^1.3.1, once@^1.3.3, once@^1.4.0, once@~1.4.0:
   version "1.4.0"

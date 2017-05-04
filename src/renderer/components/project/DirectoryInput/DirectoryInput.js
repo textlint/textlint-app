@@ -4,8 +4,7 @@ const React = require("react");
 import i18next from "i18next";
 import {
     TextField,
-    Button,
-    ButtonType,
+    DefaultButton,
     Label
 } from "office-ui-fabric-react";
 export default class DirectoryInput extends React.Component {
@@ -41,16 +40,14 @@ export default class DirectoryInput extends React.Component {
                 <TextField
                     className='DirectoryInput-textField'
                     label="Working directory"
-                    value={this.state.value}
                     defaultValue={this.props.defaultDir}
                     onChanged={this._onChanged}
                 />
-                <Button
+                <DefaultButton
                     className="DirectoryInput-submitButton"
-                    buttonType={ ButtonType.normal }
                     onClick={submit}>
                     {i18next.t("Load")}
-                </Button>
+                </DefaultButton>
             </div>
         </div>;
     }

@@ -2,7 +2,7 @@
 "use strict";
 import i18next from "i18next";
 const React = require("react");
-import {Button, ButtonType} from "office-ui-fabric-react";
+import { PrimaryButton } from "office-ui-fabric-react";
 export default class InstallButton extends React.Component {
     static propTypes = {
         disabled: React.PropTypes.bool,
@@ -10,13 +10,12 @@ export default class InstallButton extends React.Component {
     };
 
     render() {
-        return <Button
+        return <PrimaryButton
             disabled={this.props.disabled}
             className="InstallButton"
-            icon="Download"
-            buttonType={ButtonType.primary}
+            iconProps={{ iconName: "Download" }}
             onClick={this.props.onClick}>
             {i18next.t("Install")}
-        </Button>;
+        </PrimaryButton>;
     }
 }

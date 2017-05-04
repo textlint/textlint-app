@@ -15,7 +15,7 @@ import { TextlintrcEditorState } from "../../../store/TextlintrcEditor/Textlintr
 import OpenNewFileUseCase from "../../../use-case/textlint-editor/OpenNewFileUseCase.js";
 import UpdateTextUseCase from "../../../use-case/textlint-editor/UpdateTextUseCase";
 import FixTextUseCase from "../../../use-case/textlint-editor/FixTextUseCase";
-import { Button, ButtonType } from "office-ui-fabric-react";
+import { DefaultButton } from "office-ui-fabric-react";
 export default class TextlintEditorContainer extends React.Component {
     static propTypes = {
         textlintEditor: React.PropTypes.instanceOf(TextlintEditorState).isRequired,
@@ -120,7 +120,7 @@ export default class TextlintEditorContainer extends React.Component {
         });
         const includesFixableMessage = messages.some(message => message.isFixable);
         const fixButton = includesFixableMessage
-            ? <Button onClick={this.onClickFixErrors}>Fix all errors</Button>
+            ? <DefaultButton onClick={this.onClickFixErrors}>Fix all errors</DefaultButton>
             : null;
         return <div className="TextlintEditorContainer">
             <div className="TextlintEditorContainer-wrapper">

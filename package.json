@@ -139,7 +139,7 @@
     "map-like": "^1.0.3",
     "markdown-extensions": "^1.1.0",
     "normalize.css": "^6.0.0",
-    "office-ui-fabric-react": "^1.6.0",
+    "office-ui-fabric-react": "^2.24.2",
     "react": "^15.4.1",
     "react-codemirror": "^0.3.0",
     "react-dom": "^15.4.1",

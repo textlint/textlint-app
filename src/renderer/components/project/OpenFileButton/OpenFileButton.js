@@ -1,9 +1,9 @@
 // MIT © 2017 azu
 "use strict";
 const React = require("react");
-import {Button, ButtonType} from "office-ui-fabric-react";
-export default function OpenFileButton({onClick}) {
-    return <Button onClick={onClick} icon="OpenFile" buttonType={ ButtonType.command }>
+import { CommandButton } from "office-ui-fabric-react";
+export default function OpenFileButton({ onClick }) {
+    return <CommandButton onClick={onClick} iconProps={{ iconName: "OpenFile" }}>
         Open File
-    </Button>;
+    </CommandButton>;
 }
