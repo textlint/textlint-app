@@ -19,7 +19,6 @@ install:
 build_script:
   - node --version
   - npm --version
-  - npm test
   - cross-env DEBUG=electron-builder npm run release
 
 test: off
