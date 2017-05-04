@@ -6,6 +6,7 @@ const debounce = require("lodash.debounce");
 const markdownExtensions = require("markdown-extensions");
 const locator = require("textlint-app-locator");
 import TextlintEditor from "../../project/TextlintEditor/TextlintEditor";
+import SaveAsNewFileUseCase from "../../../use-case/textlint-editor/SaveAsNewFileUseCase";
 import FileToolbar from "../../project/FileToolbar/FileToolbar";
 import LintResultList from "../../project/LintResultList/LintResultList";
 // state
@@ -62,6 +63,20 @@ export default class TextlintEditorContainer extends React.Component {
                 locator.context.useCase(OpenNewFileUseCase.create()).execute(filename);
             });
         };
+        this.onClickSaveAsNewFile = event => {
+            const options = {
+                title: "Save as File",
+                filters: [
+                    { name: "Markdown", extensions: ["md"] }
+                ]
+            };
+            dialog.showSaveDialog(options, filename => {
+                if (!filename) {
+                    return;
+                }
+                locator.context.useCase(SaveAsNewFileUseCase.create()).execute(filename);
+            });
+        };
         this.onClickLintItem = lintError => {
             if (this.TextlintEditor) {
                 this.TextlintEditor.jumpToPos({
@@ -79,13 +94,19 @@ export default class TextlintEditorContainer extends React.Component {
      * @param {Function} onOpenFile
      * @returns {[*]}
      */
-    createMenuItems({ onOpenFile }) {
+    createMenuItems({ onOpenFile, onSaveAsNewFile }) {
         return [
             {
                 name: "Open File",
                 key: "OpenFile",
                 icon: "OpenFile",
                 onClick: onOpenFile
+            },
+            {
+                name: "Save as...",
+                key: "SaveFile",
+                icon: "Save",
+                onClick: onSaveAsNewFile
             }
         ];
     }
@@ -100,7 +121,8 @@ export default class TextlintEditorContainer extends React.Component {
          */
         const textlintEditor = this.props.textlintEditor;
         const items = this.createMenuItems({
-            onOpenFile: this.onClickOpenFile
+            onOpenFile: this.onClickOpenFile,
+            onSaveAsNewFile: this.onClickSaveAsNewFile
         });
         /**
          * @type {LintResultListItemProps[]}
