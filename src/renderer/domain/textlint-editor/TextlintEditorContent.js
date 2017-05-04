@@ -7,9 +7,13 @@ export default class TextlintEditorContent {
      * @param {string} text
      * @param {string} filePath
      */
-    constructor({text, filePath}) {
+    constructor({ text, filePath }) {
         this.text = text;
         this.filePath = filePath;
+    }
+
+    get canAccessToFile() {
+        return true;
     }
 
     get fileExtension() {
@@ -21,6 +25,6 @@ export default class TextlintEditorContent {
      * @returns {TextlintEditorContent}
      */
     updateText(text) {
-        return new this.constructor(Object.assign({}, this, {text}));
+        return new this.constructor(Object.assign({}, this, { text }));
     }
 }

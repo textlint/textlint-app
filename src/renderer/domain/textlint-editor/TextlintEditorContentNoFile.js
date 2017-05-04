@@ -4,8 +4,12 @@ import TextlintEditorContent from "./TextlintEditorContent";
 const os = require("os");
 const path = require("path");
 export default class TextlintEditorContentNoFile extends TextlintEditorContent {
-    constructor({text}) {
+    constructor({ text }) {
         const tmpFile = path.join(os.tmpdir(), "tmp.md");
-        super({text, filePath: tmpFile});
+        super({ text, filePath: tmpFile });
+    }
+
+    get canAccessToFile() {
+        return false;
     }
 }

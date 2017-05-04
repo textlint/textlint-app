@@ -6,6 +6,7 @@ const debounce = require("lodash.debounce");
 const markdownExtensions = require("markdown-extensions");
 const locator = require("textlint-app-locator");
 import TextlintEditor from "../../project/TextlintEditor/TextlintEditor";
+import ElectronWindowTitle from "../../project/ElectronWindowTitle/ElectronWindowTitle";
 import SaveAsNewFileUseCase from "../../../use-case/textlint-editor/SaveAsNewFileUseCase";
 import FileToolbar from "../../project/FileToolbar/FileToolbar";
 import LintResultList from "../../project/LintResultList/LintResultList";
@@ -149,6 +150,7 @@ export default class TextlintEditorContainer extends React.Component {
                 <div className="TextlintEditorContainer-header">
                     <h1 className="TextlintEditorContainer-title ms-font-xxl ms-fontColor-themePrimary">Edit with
                         textlint</h1>
+                    <ElectronWindowTitle>{textlintEditor.editingFileName}</ElectronWindowTitle>
                     <div className="TextlintEditorContainer-toolbar">
                         <FileToolbar farItems={items}/>
                     </div>
