@@ -28,8 +28,8 @@
     "clean": "rimraf app/build dist/ out/ && mkdirp app/build",
     "_i18n:extract": "i18next src/renderer/ -o locales -l ja -r",
     "pack": "npm run build && build --dir",
-    "dist": "npm run build && build",
-    "release": "npm run build && build --publish onTagOrDraft"
+    "dist": "npm run build && build --x64 --ia32",
+    "release": "npm run build && build --x64 --ia32 --publish onTagOrDraft"
   },
   "build": {
     "productName": "textlint",
