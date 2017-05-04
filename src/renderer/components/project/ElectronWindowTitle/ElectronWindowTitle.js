@@ -7,6 +7,10 @@ export default class ElectronWindowTitle extends React.Component {
         children: React.PropTypes.string.isRequired
     };
 
+    shouldComponentUpdate(nextProps) {
+        return this.props.children !== nextProps.children;
+    }
+
     componentDidMount() {
         const currentWindow = remote.getCurrentWindow();
         currentWindow.setTitle(this.getTitle());
