@@ -130,10 +130,6 @@ almin-logger@^4.0.3:
   dependencies:
     map-like "^1.0.3"
 
-almin-reduce-store@^1.0.1:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/almin-reduce-store/-/almin-reduce-store-1.1.2.tgz#685ea60fa78f585f97ec1051840da22730d9a936"
-
 almin@^0.12.2:
   version "0.12.2"
   resolved "https://registry.yarnpkg.com/almin/-/almin-0.12.2.tgz#614b07a60d9e3cbfdbc6ecd85b93fd0319e80982"
@@ -2238,7 +2234,7 @@ defined@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/defined/-/defined-1.0.0.tgz#c98d9bcef75674188e110969151199e39b1fa693"
 
-del@^2.0.2:
+del@^2.0.2, del@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/del/-/del-2.2.2.tgz#c12c981d067846c84bcaf862cff930d907ffd1a8"
   dependencies:
@@ -7771,9 +7767,9 @@ webpack-sources@^0.2.3:
     source-list-map "^1.1.1"
     source-map "~0.5.3"
 
-webpack@^2.2.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.4.1.tgz#15a91dbe34966d8a4b99c7d656efd92a2e5a6f6a"
+webpack@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-2.5.0.tgz#5a17089f8d0e43442e606d6cf9b2a146c8ed9911"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"

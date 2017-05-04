@@ -118,12 +118,11 @@
     "rimraf": "^2.5.4",
     "style-loader": "^0.17.0",
     "url-loader": "^0.5.7",
-    "webpack": "^2.2.1"
+    "webpack": "^2.5.0"
   },
   "dependencies": {
     "almin": "^0.12.2",
     "almin-logger": "^4.0.3",
-    "almin-reduce-store": "^1.0.1",
     "classnames": "^2.2.5",
     "codemirror": "^5.23.0",
     "codemirror-textlint": "^1.1.0",

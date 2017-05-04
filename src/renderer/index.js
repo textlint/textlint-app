@@ -15,15 +15,18 @@ import App from "./components/App";
 // Store
 import AppStore from "./store/AppStore";
 
-const AlminLogger = require("almin-logger");
 const locator = require("textlint-app-locator");
-const {Dispatcher, Context} = require("almin");
+const { Dispatcher, Context } = require("almin");
 locator.context = new Context({
     store: AppStore.create(),
     dispatcher: new Dispatcher()
 });
-const logger = new AlminLogger();
-logger.startLogging(locator.context);
+
+if (process.env.NODE_ENV !== "production") {
+    const AlminLogger = require("almin-logger");
+    const logger = new AlminLogger();
+    logger.startLogging(locator.context);
+}
 
 i18next.use(LanguageDetector).init({
     // disable
