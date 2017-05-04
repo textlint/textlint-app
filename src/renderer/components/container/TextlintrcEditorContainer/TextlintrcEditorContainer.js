@@ -5,15 +5,17 @@ import i18next from "i18next";
 const locator = require("textlint-app-locator");
 import TextlintrcEditor from "../../project/TextlintrcEditor/TextlintrcEditor";
 import InstallButton from "../../project/InstallButton/InstallButton";
+import SaveButton from "../../project/SaveButton/SaveButton";
 import DirectoryInput from "../../project/DirectoryInput/DirectoryInput";
 import MessageNotification from "../../project/MessageNotification/MessageNotification";
-import {Spinner, SpinnerType} from "office-ui-fabric-react";
+import { Spinner, SpinnerSize } from "office-ui-fabric-react";
 // use-case
 import InstallTextlintPackageUseCase from "../../../use-case/workspace/InstallTextlintPackageUseCase";
 import UpdateTextlintrcUseCase from "../../../use-case/textlintrc/UpdateTextlintrcUseCase";
 import UpdateWorkspaceDirectoryUseCase from "../../../use-case/workspace/UpdateWorkspaceDirectoryUseCase";
+import WriteToTextlintrcUseCase from "../../../use-case/textlintrc/WriteToTextlintrcUseCase";
 // state
-import {TextlintrcEditorState} from "../../../store/TextlintrcEditor/TextlintrcEditorStore";
+import { TextlintrcEditorState } from "../../../store/TextlintrcEditor/TextlintrcEditorStore";
 export default class TextlintrcEditorContainer extends React.Component {
 
     static propTypes = {
@@ -25,6 +27,9 @@ export default class TextlintrcEditorContainer extends React.Component {
 
         this.onClickInstall = event => {
             return locator.context.useCase(InstallTextlintPackageUseCase.create()).execute();
+        };
+        this.onClickSave = event => {
+            return locator.context.useCase(WriteToTextlintrcUseCase.create()).execute();
         };
         this.onChangeValue = value => {
             locator.context.useCase(UpdateTextlintrcUseCase.create()).execute(value);
@@ -43,7 +48,7 @@ export default class TextlintrcEditorContainer extends React.Component {
         const textlintrcEditor = this.props.textlintrcEditor;
         const workingDirectory = textlintrcEditor.workingDirectory;
         const message = textlintrcEditor.isLoading
-            ? <Spinner type={ SpinnerType.large }
+            ? <Spinner size={ SpinnerSize.large }
                        label='Installing textlint rules...'/>
             : null;
         return <div className="TextlintrcEditorContainer">
@@ -60,7 +65,13 @@ export default class TextlintrcEditorContainer extends React.Component {
                 value={textlintrcEditor.textValue}
                 onChange={this.onChangeValue}
             />
+            <SaveButton
+                className="TextlintrcEditorContainer-button"
+                disabled={textlintrcEditor.isLoading}
+                onClick={this.onClickSave}
+            />
             <InstallButton
+                className="TextlintrcEditorContainer-button"
                 disabled={textlintrcEditor.isLoading}
                 onClick={this.onClickInstall}
             />

@@ -35,6 +35,9 @@ export class TextlintAppRepository extends EventEmitter {
      */
     lastUsed() {
         const app = this._database.get("lastUsed");
+        if (!app) {
+            return;
+        }
         return this._get(app.id);
     }
 

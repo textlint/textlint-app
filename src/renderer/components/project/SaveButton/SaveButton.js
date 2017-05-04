@@ -4,7 +4,7 @@ import i18next from "i18next";
 const React = require("react");
 const classnames = require("classnames");
 import { PrimaryButton } from "office-ui-fabric-react";
-export default class InstallButton extends React.Component {
+export default class SaveButton extends React.Component {
     static propTypes = {
         className: React.PropTypes.string,
         disabled: React.PropTypes.bool,
@@ -14,10 +14,10 @@ export default class InstallButton extends React.Component {
     render() {
         return <PrimaryButton
             disabled={this.props.disabled}
-            className={classnames("InstallButton", this.props.className)}
-            iconProps={{ iconName: "Download" }}
+            className={classnames("SaveButton", this.props.className)}
+            iconProps={{ iconName: "Save" }}
             onClick={this.props.onClick}>
-            {i18next.t("Install")}
+            {i18next.t("Save")}
         </PrimaryButton>;
     }
 }

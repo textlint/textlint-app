@@ -31,6 +31,17 @@ export default class PackageManger {
     }
 
     /**
+     * @param {string} directory
+     * @param {string} textlintrcContent
+     * @returns {Promise}
+     */
+    static writeTextlintrc(directory, textlintrcContent) {
+        const manager = new ServerPackageManager(directory);
+        return manager.writeTextlintrc(textlintrcContent);
+    }
+
+
+    /**
      * Check integrity between .textlintrc and installed module
      * @param {string} directory
      * @returns {Promise.<Boolean>}

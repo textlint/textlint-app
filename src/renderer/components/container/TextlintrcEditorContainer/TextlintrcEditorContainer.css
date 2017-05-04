@@ -5,3 +5,7 @@
 .TextlintrcEditorContainer-editor {
     padding: 1rem 0;
 }
+
+.TextlintrcEditorContainer-button {
+    margin-right: 0.5rem;
+}

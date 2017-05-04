@@ -28,7 +28,7 @@ module.exports = class TextlintPackageManger {
             return npm.install(packageNames, {
                 cwd: this.packageDirectory,
                 save: true
-            })
+            });
         }).then(() => {
             return this.writeTextlintrc(textlintrc);
         });
@@ -45,7 +45,7 @@ module.exports = class TextlintPackageManger {
                 } else {
                     resolve(content);
                 }
-            })
+            });
         });
     }
 
@@ -54,10 +54,10 @@ module.exports = class TextlintPackageManger {
      * @returns {Promise}
      */
     checkIntegrity() {
-        return npm.list(this.packageDirectory).then((packageNames) => {
+        return npm.list(this.packageDirectory).then(packageNames => {
             return this.getTextlintrc().then(() => {
                 const packageNames = toPackageList(this.textlintrcFilePath);
-                return packageNames.every((packageName) => {
+                return packageNames.every(packageName => {
                     return packageNames.indexOf(packageName) !== -1;
                 });
             });
@@ -71,7 +71,7 @@ module.exports = class TextlintPackageManger {
      */
     writeTextlintrc(textlintrc) {
         return new Promise((resolve, reject) => {
-            fs.writeFile(this.textlintrcFilePath, textlintrc, "utf-8", (error) => {
+            fs.writeFile(this.textlintrcFilePath, textlintrc, "utf-8", error => {
                 if (error) {
                     reject(error);
                 } else {
@@ -98,6 +98,6 @@ module.exports = class TextlintPackageManger {
     _createPackageContent() {
         return {
             "private": true
-        }
+        };
     }
 };

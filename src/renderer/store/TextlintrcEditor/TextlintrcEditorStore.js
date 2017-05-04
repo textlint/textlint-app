@@ -78,15 +78,22 @@ export default class TextlintrcEditorStore extends Store {
      */
     constructor({ textlintAppRepository }) {
         super();
-        this.state = new TextlintrcEditorState();
-        textlintAppRepository.onChange(this._onChange.bind(this));
+        this.state = new TextlintrcEditorState({
+            isLoading: false
+        });
+        this.textlintAppRepository = textlintAppRepository;
+    }
+
+    receivePayload(payload) {
+        const app = this.textlintAppRepository.lastUsed();
+        if (!app) {
+            return;
+        }
+        const baseState = this.state.update({ textlintApp: app });
+        this.setState(baseState.reduce(payload));
     }
 
     getState() {
         return this.state;
-    }
-
-    _onChange(textlintApp) {
-        this.setState(this.state.update({ textlintApp }));
     }
 }
