@@ -2,6 +2,7 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
+const del = require("del");
 const mkdirp = require("mkdirp");
 const npm = require("@azu/npm-programmatic");
 const toPackageList = require("textlintrc-to-pacakge-list");
@@ -16,9 +17,13 @@ module.exports = class TextlintPackageManger {
     /**
      * Install textlint rule package written in `textlintrc`
      * @param {string} textlintrc
+     * @param {boolean} [force]
      * @return {Promise}
      */
-    install(textlintrc) {
+    install(textlintrc, { force = false } = {}) {
+        if (force) {
+            this.clean();
+        }
         return Promise.resolve().then(() => {
             const json = JSON.parse(stripJsonComments(textlintrc));
             return toPackageList(json);
@@ -88,6 +93,17 @@ module.exports = class TextlintPackageManger {
             return;
         }
         fs.writeFileSync(packageFilePath, JSON.stringify(this._createPackageContent(), null, 4), "utf-8");
+    }
+
+    clean() {
+        del.sync(
+            [
+                path.join(this.packageDirectory, "package.json"),
+                path.join(this.packageDirectory, "node_modules")
+            ], {
+                force: true
+            }
+        );
     }
 
     /**

@@ -13,7 +13,11 @@ export default class PackageManger {
          */
         const manager = new ServerPackageManager(workspace.directory);
         debug("Installing from ", manager.textlintrcFilePath);
-        return manager.install(workspace.textlintrc.textValue);
+        // TODO: always flush and install
+        // We should implement package.update
+        return manager.install(workspace.textlintrc.textValue, {
+            force: true
+        });
     }
 
     /**

@@ -44,6 +44,7 @@
   "dependencies": {
     "@azu/npm-programmatic": "^0.2.0",
     "mkdirp": "^0.5.1",
+    "del": "^2.2.2",
     "textlintrc-to-pacakge-list": "^1.2.0"
   }
 }
