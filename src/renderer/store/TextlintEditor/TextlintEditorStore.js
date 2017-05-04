@@ -48,8 +48,19 @@ export class TextlintEditorState {
             canAccessToFile: textlintEditor.content.canAccessToFile
         }));
     }
-
 }
+
+/**
+ * default state
+ * @type {TextlintEditorState}
+ */
+export const defaultState = new TextlintEditorState({
+    textContent: "",
+    contentFilePath: null,
+    contentFileExtension: null,
+    canAccessToFile: false
+});
+
 export default class TextlintEditorStore extends Store {
     /**
      * @param {TextlintAppRepository} textlintAppRepository
@@ -59,12 +70,7 @@ export default class TextlintEditorStore extends Store {
         /**
          * @type {TextlintEditorState}
          */
-        this.state = new TextlintEditorState({
-            textContent: "",
-            contentFilePath: null,
-            contentFileExtension: null,
-            canAccessToFile: false
-        });
+        this.state = defaultState;
         textlintAppRepository.onChange(this._onChange.bind(this));
     }
 
