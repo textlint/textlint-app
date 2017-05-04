@@ -1,7 +1,7 @@
 // MIT © 2017 azu
 "use strict";
 const React = require("react");
-const {dialog} = require("electron").remote;
+const { dialog } = require("electron").remote;
 const debounce = require("lodash.debounce");
 const markdownExtensions = require("markdown-extensions");
 const locator = require("textlint-app-locator");
@@ -9,13 +9,13 @@ import TextlintEditor from "../../project/TextlintEditor/TextlintEditor";
 import FileToolbar from "../../project/FileToolbar/FileToolbar";
 import LintResultList from "../../project/LintResultList/LintResultList";
 // state
-import {TextlintEditorState} from "../../../store/TextlintEditor/TextlintEditorStore";
-import {TextlintrcEditorState} from "../../../store/TextlintrcEditor/TextlintrcEditorStore";
+import { TextlintEditorState } from "../../../store/TextlintEditor/TextlintEditorStore";
+import { TextlintrcEditorState } from "../../../store/TextlintrcEditor/TextlintrcEditorStore";
 // use-case
 import OpenNewFileUseCase from "../../../use-case/textlint-editor/OpenNewFileUseCase.js";
 import UpdateTextUseCase from "../../../use-case/textlint-editor/UpdateTextUseCase";
 import FixTextUseCase from "../../../use-case/textlint-editor/FixTextUseCase";
-import {Button, ButtonType} from "office-ui-fabric-react";
+import { Button, ButtonType } from "office-ui-fabric-react";
 export default class TextlintEditorContainer extends React.Component {
     static propTypes = {
         textlintEditor: React.PropTypes.instanceOf(TextlintEditorState).isRequired,
@@ -37,7 +37,7 @@ export default class TextlintEditorContainer extends React.Component {
         this.onChangeTextlintEditor = value => {
             locator.context.useCase(UpdateTextUseCase.create()).execute(value);
         };
-        this.onLintError = ({lintErrors, lintMessages}) => {
+        this.onLintError = ({ lintErrors, lintMessages }) => {
             this.setState({
                 lintErrors,
                 lintMessages
@@ -47,11 +47,14 @@ export default class TextlintEditorContainer extends React.Component {
             const options = {
                 title: "Open File for linting",
                 filters: [
-                    {name: "Markdown", extensions: markdownExtensions}
+                    { name: "Markdown", extensions: markdownExtensions }
                 ],
                 properties: ["openFile"]
             };
             dialog.showOpenDialog(options, filenames => {
+                if (!filenames) {
+                    return;
+                }
                 if (filenames.length <= 0) {
                     return;
                 }
@@ -76,7 +79,7 @@ export default class TextlintEditorContainer extends React.Component {
      * @param {Function} onOpenFile
      * @returns {[*]}
      */
-    createMenuItems({onOpenFile}) {
+    createMenuItems({ onOpenFile }) {
         return [
             {
                 name: "Open File",

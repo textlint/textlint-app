@@ -1,20 +1,20 @@
 // MIT © 2017 azu
 "use strict";
-import {ReduceStore, ReduceState} from "almin-reduce-store";
-export class TextlintEditorState extends ReduceState {
+import { Store } from "almin";
+export class TextlintEditorState {
     /**
-     * @param {TextlintEditor} [textlintEditor]
+     * @param {string} textContent
+     * @param {string|null} contentFilePath
+     * @param {string|null} contentFileExtension
      */
     constructor({
-        textlintEditor = {
-            content: {}
-        }
-    } = {}) {
-        super();
-        this.textlintEditor = textlintEditor;
-        this.textContent = textlintEditor.content.text;
-        this.contentFilePath = textlintEditor.content.filePath;
-        this.contentFileExtenstion = textlintEditor.content.fileExtension;
+                    textContent,
+                    contentFilePath,
+                    contentFileExtension
+                }) {
+        this.textContent = textContent;
+        this.contentFilePath = contentFilePath;
+        this.contentFileExtension = contentFileExtension;
     }
 
     /**
@@ -22,21 +22,33 @@ export class TextlintEditorState extends ReduceState {
      * @param {TextlintApp} textlintApp
      * @returns {TextlintEditorState}
      */
-    update({textlintApp}) {
+    update({ textlintApp }) {
+        /**
+         * @type {TextlintEditor}
+         */
         const textlintEditor = textlintApp.textlintEditor;
         return new TextlintEditorState(Object.assign({}, this, {
-            textlintEditor
+            textContent: textlintEditor.content.text,
+            contentFilePath: textlintEditor.content.filePath,
+            contentFileExtension: textlintEditor.content.fileExtension
         }));
     }
 
 }
-export default class TextlintEditorStore extends ReduceStore {
+export default class TextlintEditorStore extends Store {
     /**
      * @param {TextlintAppRepository} textlintAppRepository
      */
-    constructor({textlintAppRepository}) {
+    constructor({ textlintAppRepository }) {
         super();
-        this.state = new TextlintEditorState();
+        /**
+         * @type {TextlintEditorState}
+         */
+        this.state = new TextlintEditorState({
+            textContent: "",
+            contentFilePath: null,
+            contentFileExtension: null
+        });
         textlintAppRepository.onChange(this._onChange.bind(this));
     }
 
@@ -45,6 +57,6 @@ export default class TextlintEditorStore extends ReduceStore {
     }
 
     _onChange(textlintApp) {
-        this.setState(this.state.update({textlintApp}));
+        this.setState(this.state.update({ textlintApp }));
     }
 }

@@ -121,7 +121,7 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
-    "almin": "^0.12.0",
+    "almin": "^0.12.2",
     "almin-logger": "^4.0.3",
     "almin-reduce-store": "^1.0.1",
     "classnames": "^2.2.5",

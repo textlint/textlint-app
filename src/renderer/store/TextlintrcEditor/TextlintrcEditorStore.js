@@ -1,31 +1,41 @@
 // MIT © 2017 azu
 "use strict";
-import {ReduceStore, ReduceState} from "almin-reduce-store";
+import { Store } from "almin";
 // use-case
 import InstallTextlintPackageUseCase from "../../use-case/workspace/InstallTextlintPackageUseCase";
-export class TextlintrcEditorState extends ReduceState {
+export class TextlintrcEditorState {
+
     /**
-     * @param {Workspace} [workspace]
-     * @param {Textlintrc} [textlintrc]
-     * @param {boolean} [isLoading]
+     * @param {string} [workingDirectory]
+     * @param {string} [modulesDirectory]
+     * @param {string} [isValid]
+     * @param {string} [textValue]
+     * @param {string} [jsonValue]
+     * @param {string} [packageNames]
+     * @param {string} [canAccessToFile]
+     * @param {string} [filePath]
+     * @param {boolean} isLoading
      */
     constructor({
-        workspace = {},
-        textlintrc = {},
-        isLoading = false
-    } = {}) {
-        super();
-        this.workspace = workspace;
-        this.workingDirectory = workspace.directory;
-        this.modulesDirectory = workspace.modulesDirectory;
+                    workingDirectory,
+                    modulesDirectory,
+                    isValid,
+                    textValue,
+                    jsonValue,
+                    packageNames,
+                    canAccessToFile,
+                    filePath,
+                    isLoading
+                } = {}) {
+        this.workingDirectory = workingDirectory;
+        this.modulesDirectory = modulesDirectory;
         // textlintrc
-        this.textlintrc = textlintrc;
-        this.isValid = textlintrc.isValid;
-        this.textValue = textlintrc.textValue;
-        this.jsonValue = textlintrc.jsonValue;
-        this.packageNames = textlintrc.packageNames;
-        this.canAccessToFile = textlintrc.canAccessToFile;
-        this.filePath = textlintrc.filePath;
+        this.isValid = isValid;
+        this.textValue = textValue;
+        this.jsonValue = jsonValue;
+        this.packageNames = packageNames;
+        this.canAccessToFile = canAccessToFile;
+        this.filePath = filePath;
         // state
         this.isLoading = isLoading;
     }
@@ -35,32 +45,38 @@ export class TextlintrcEditorState extends ReduceState {
      * @param {TextlintApp} textlintApp
      * @returns {TextlintrcEditorState}
      */
-    update({textlintApp}) {
+    update({ textlintApp }) {
         const currentWorkspace = textlintApp.workspaces.current;
         const textlintrc = currentWorkspace.textlintrc;
         return new TextlintrcEditorState(Object.assign({}, this, {
-            workspace: currentWorkspace,
-            textlintrc
+            workingDirectory: currentWorkspace.directory,
+            modulesDirectory: currentWorkspace.modulesDirectory,
+            isValid: textlintrc.isValid,
+            textValue: textlintrc.textValue,
+            jsonValue: textlintrc.jsonValue,
+            packageNames: textlintrc.packageNames,
+            canAccessToFile: textlintrc.canAccessToFile,
+            filePath: textlintrc.filePath
         }));
     }
 
     reduce(payload) {
         switch (payload.type) {
             case InstallTextlintPackageUseCase.Events.beginInstall:
-                return new TextlintrcEditorState(Object.assign({}, this, {isLoading: true}));
+                return new TextlintrcEditorState(Object.assign({}, this, { isLoading: true }));
             case InstallTextlintPackageUseCase.Events.successInstall:
             case InstallTextlintPackageUseCase.Events.failureInstall:
-                return new TextlintrcEditorState(Object.assign({}, this, {isLoading: false}));
+                return new TextlintrcEditorState(Object.assign({}, this, { isLoading: false }));
             default:
                 return this;
         }
     }
 }
-export default class TextlintrcEditorStore extends ReduceStore {
+export default class TextlintrcEditorStore extends Store {
     /**
      * @param {TextlintAppRepository} textlintAppRepository
      */
-    constructor({textlintAppRepository}) {
+    constructor({ textlintAppRepository }) {
         super();
         this.state = new TextlintrcEditorState();
         textlintAppRepository.onChange(this._onChange.bind(this));
@@ -71,6 +87,6 @@ export default class TextlintrcEditorStore extends ReduceStore {
     }
 
     _onChange(textlintApp) {
-        this.setState(this.state.update({textlintApp}));
+        this.setState(this.state.update({ textlintApp }));
     }
 }
