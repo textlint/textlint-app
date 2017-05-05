@@ -1,8 +1,9 @@
 const path = require("path");
 const webpack = require("webpack");
 
+const pkg = require("./package.json");
+const dependencyNames = Object.keys(pkg.dependencies);
 // Node process
-// @deprecated
 const node = {
     entry: {
         "node": "./src/node/index.js"
@@ -31,11 +32,7 @@ const node = {
             "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
         }),
         // textlint in node.js
-        new webpack.ExternalsPlugin("commonjs", [
-            "textlint",
-            "electron-updater",
-            "electron-is-dev"
-        ])
+        new webpack.ExternalsPlugin("commonjs", dependencyNames)
     ],
     node: {
         __dirname: false,
@@ -91,4 +88,4 @@ const renderer = {
     }
 };
 
-module.exports = [renderer];
+module.exports = [node, renderer];
