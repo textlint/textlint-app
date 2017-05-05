@@ -1,7 +1,7 @@
 // MIT © 2017 azu
 "use strict";
 import { UseCase } from "almin";
-const debug = require("debug")("WriteToTextlintrcUseCase");
+const debug = require("debug")("textlint-app:WriteToTextlintrcUseCase");
 import textlintAppRepository from "../../infra/repository/TextlintAppRepository";
 import PackageManger from "../../infra/api/PackageManger";
 export default class WriteToTextlintrcUseCase extends UseCase {
@@ -17,7 +17,7 @@ export default class WriteToTextlintrcUseCase extends UseCase {
     execute() {
         const app = this.textlintAppRepository.lastUsed();
         const textlintrc = app.workspaces.current.textlintrc;
-        if (textlintrc.canAccessToFile) {
+        if (!textlintrc.canAccessToFile) {
             debug("can not access .textlint: %s", textlintrc.filePath);
             return;
         }
