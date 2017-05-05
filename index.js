@@ -1,4 +1,4 @@
 // MIT © 2017 azu
 "use strict";
-
-require("./app/build/node");
+require("babel-register");
+require("./src/node/index");

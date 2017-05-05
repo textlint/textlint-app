@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 // Node process
+// @deprecated
 const node = {
     entry: {
         "node": "./src/node/index.js"
@@ -89,4 +90,5 @@ const renderer = {
         module: "empty"
     }
 };
-module.exports = [node, renderer];
+
+module.exports = [renderer];

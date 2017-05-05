@@ -1,7 +1,7 @@
 // MIT © 2017 azu
 "use strict";
-import {app} from "electron";
-import {BrowserWindow} from "electron";
+import { app } from "electron";
+import { BrowserWindow } from "electron";
 const url = require("url");
 import path from "path";
 import windowStateKeeper from "electron-window-state";
@@ -34,7 +34,7 @@ export default class Application {
             html: "/app/index.html"
         };
         const format = url.format({
-            pathname: path.join(__dirname, "..", "index.html"),
+            pathname: path.join(__dirname, "..", "..", "app", "index.html"),
             protocol: "file:",
             slashes: true
         });

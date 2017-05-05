@@ -44,12 +44,12 @@
 
 .TextlintEditor {
     flex: 4 1 auto;
-    max-width: calc(100% - 15%);
+    max-width: calc(100% - 20%);
 }
 
 .TextlintEditorContainer-mainResult {
     flex: 1 1 auto;
-    max-width: 15%;
+    max-width: 20%;
     min-width: 10%;
     height: 100%;
     color: white;

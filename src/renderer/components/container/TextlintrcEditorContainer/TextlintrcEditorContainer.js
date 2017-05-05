@@ -8,12 +8,13 @@ import InstallButton from "../../project/InstallButton/InstallButton";
 import SaveButton from "../../project/SaveButton/SaveButton";
 import DirectoryInput from "../../project/DirectoryInput/DirectoryInput";
 import MessageNotification from "../../project/MessageNotification/MessageNotification";
-import { Spinner, SpinnerSize } from "office-ui-fabric-react";
+import { MessageBar, MessageBarType, Spinner, SpinnerSize } from "office-ui-fabric-react";
 // use-case
 import InstallTextlintPackageUseCase from "../../../use-case/workspace/InstallTextlintPackageUseCase";
 import UpdateTextlintrcUseCase from "../../../use-case/textlintrc/UpdateTextlintrcUseCase";
 import UpdateWorkspaceDirectoryUseCase from "../../../use-case/workspace/UpdateWorkspaceDirectoryUseCase";
 import WriteToTextlintrcUseCase from "../../../use-case/textlintrc/WriteToTextlintrcUseCase";
+import { DismissInstallErrorUseCase } from "../../../use-case/textlintrc/DismissInstallErrorUseCase";
 // state
 import { TextlintrcEditorState } from "../../../store/TextlintrcEditor/TextlintrcEditorStore";
 export default class TextlintrcEditorContainer extends React.Component {
@@ -47,9 +48,14 @@ export default class TextlintrcEditorContainer extends React.Component {
          */
         const textlintrcEditor = this.props.textlintrcEditor;
         const workingDirectory = textlintrcEditor.workingDirectory;
-        const message = textlintrcEditor.isLoading
+        const loadingMessage = textlintrcEditor.isLoading
             ? <Spinner size={ SpinnerSize.large }
                        label='Installing textlint rules...'/>
+            : null;
+        const errorMessage = textlintrcEditor.installFailureError
+            ? <MessageBar messageBarType={ MessageBarType.error } onDismiss={() => {
+                locator.context.useCase(DismissInstallErrorUseCase).execute();
+            }}>{textlintrcEditor.installFailureError.message}</MessageBar>
             : null;
         return <div className="TextlintrcEditorContainer">
             <h1 className="TextlintrcEditorContainer-title ms-font-xxl ms-fontColor-themePrimary">.textlintrc</h1>
@@ -58,7 +64,8 @@ export default class TextlintrcEditorContainer extends React.Component {
                 <li>{i18next.t("Write .textlintrc configuration")}</li>
                 <li>{i18next.t("Install textlint rules from the .textlintrc configuration.(Press \"Install\" button)")}</li>
             </ol>
-            <MessageNotification>{message}</MessageNotification>
+            <MessageNotification>{loadingMessage}</MessageNotification>
+            {errorMessage}
             <DirectoryInput defaultDir={workingDirectory} onSubmit={this.onSubmitDirectory}/>
             <TextlintrcEditor
                 className="TextlintrcEditorContainer-editor"

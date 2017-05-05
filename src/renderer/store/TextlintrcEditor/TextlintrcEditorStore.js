@@ -1,7 +1,9 @@
 // MIT © 2017 azu
 "use strict";
+import i18next from"i18next";
 import { Store } from "almin";
 // use-case
+import { DismissInstallErrorType } from "../../use-case/textlintrc/DismissInstallErrorUseCase";
 import InstallTextlintPackageUseCase from "../../use-case/workspace/InstallTextlintPackageUseCase";
 export class TextlintrcEditorState {
 
@@ -14,7 +16,8 @@ export class TextlintrcEditorState {
      * @param {string} [packageNames]
      * @param {string} [canAccessToFile]
      * @param {string} [filePath]
-     * @param {boolean} isLoading
+     * @param {boolean} [isLoading]
+     * @param {Error} [installFailureError]
      */
     constructor({
                     workingDirectory,
@@ -25,7 +28,8 @@ export class TextlintrcEditorState {
                     packageNames,
                     canAccessToFile,
                     filePath,
-                    isLoading
+                    isLoading,
+                    installFailureError
                 } = {}) {
         this.workingDirectory = workingDirectory;
         this.modulesDirectory = modulesDirectory;
@@ -38,6 +42,7 @@ export class TextlintrcEditorState {
         this.filePath = filePath;
         // state
         this.isLoading = isLoading;
+        this.installFailureError = installFailureError;
     }
 
     /**
@@ -65,8 +70,16 @@ export class TextlintrcEditorState {
             case InstallTextlintPackageUseCase.Events.beginInstall:
                 return new TextlintrcEditorState(Object.assign({}, this, { isLoading: true }));
             case InstallTextlintPackageUseCase.Events.successInstall:
-            case InstallTextlintPackageUseCase.Events.failureInstall:
                 return new TextlintrcEditorState(Object.assign({}, this, { isLoading: false }));
+            case InstallTextlintPackageUseCase.Events.failureInstall:
+                return new TextlintrcEditorState(Object.assign({}, this, {
+                    isLoading: false,
+                    installFailureError: new Error(i18next.t("Failed to install. Please check .textlintrc and Press Install again."))
+                }));
+            case DismissInstallErrorType:
+                return new TextlintrcEditorState(Object.assign({}, this, {
+                    installFailureError: undefined
+                }));
             default:
                 return this;
         }
