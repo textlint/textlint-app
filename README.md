@@ -9,8 +9,7 @@ textlint app for cross platform.
 
 ## Install
 
-- [ ] Download Binary
-- [WIP] https://github.com/textlint/textlint-app/releases
+Download Binary from <https://github.com/textlint/textlint-app/releases>
 
 ## Development
 
@@ -20,6 +19,19 @@ You can install textlint-app in local enviroment.
     npm run bootstrap
     npm run watch
     npm run electron
+
+### Update packages
+
+If you update packages/ modules
+
+    yar run publish
+    # It bump version, not publish to npm
+    
+Update packages/ dependencies
+
+    yarn upgrade
+
+TODO: `file:` is not linked by lerna... We will improve this.
 
 ## Changelog
 
