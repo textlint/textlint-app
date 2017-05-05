@@ -11,14 +11,14 @@
 
 ## Install
 
-Download Binary from <https://github.com/textlint/textlint-app/releases>
+Download Binary from <https://github.com/textlint/textlint-app/releases/latest>
 
 ## Features
 
 - No dependencies
     - Just install and run it
 - Cross platform
-    - Windows/Linux/Mac - [Download it](https://github.com/textlint/textlint-app/releases)
+    - Windows/Linux/Mac - [Download it](https://github.com/textlint/textlint-app/releases/latest)
 - Support `.textlintrc`
     - You can use exist `.textlintrc` config
 - Support `--fix`
