@@ -1,5 +1,7 @@
 # textlint-app [![Build Status](https://travis-ci.org/textlint/textlint-app.svg?branch=master)](https://travis-ci.org/textlint/textlint-app) [![Build status](https://ci.appveyor.com/api/projects/status/mnburjdwu7vsva7t?svg=true)](https://ci.appveyor.com/project/azu/textlint-app)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/textlint/textlint-app.svg)](https://greenkeeper.io/)
+
 [textlint](https://github.com/textlint/textlint "textlint") app for cross platform.
 
 ![gif](https://media.giphy.com/media/3o7buj7KnuEurvGVm8/giphy.gif)
