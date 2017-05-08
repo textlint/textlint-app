@@ -2,6 +2,12 @@
 "use strict";
 import * as path from "path";
 import { Store } from "almin";
+export const defaultStateArgs = {
+    textContent: "",
+    contentFilePath: null,
+    contentFileExtension: null,
+    canAccessToFile: false
+};
 export class TextlintEditorState {
     /**
      * @param {string} textContent
@@ -14,7 +20,7 @@ export class TextlintEditorState {
                     contentFilePath,
                     contentFileExtension,
                     canAccessToFile
-                }) {
+                } = defaultStateArgs) {
         this.textContent = textContent;
         this.contentFilePath = contentFilePath;
         this.contentFileExtension = contentFileExtension;
@@ -50,17 +56,6 @@ export class TextlintEditorState {
     }
 }
 
-/**
- * default state
- * @type {TextlintEditorState}
- */
-export const defaultState = new TextlintEditorState({
-    textContent: "",
-    contentFilePath: null,
-    contentFileExtension: null,
-    canAccessToFile: false
-});
-
 export default class TextlintEditorStore extends Store {
     /**
      * @param {TextlintAppRepository} textlintAppRepository
@@ -70,7 +65,7 @@ export default class TextlintEditorStore extends Store {
         /**
          * @type {TextlintEditorState}
          */
-        this.state = defaultState;
+        this.state = new TextlintEditorState();
         textlintAppRepository.onChange(this._onChange.bind(this));
     }
 
