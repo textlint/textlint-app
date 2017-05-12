@@ -134,9 +134,9 @@ almin-logger@^4.0.3:
   dependencies:
     map-like "^1.0.3"
 
-almin@^0.12.2:
-  version "0.12.2"
-  resolved "https://registry.yarnpkg.com/almin/-/almin-0.12.2.tgz#614b07a60d9e3cbfdbc6ecd85b93fd0319e80982"
+almin@^0.12.3:
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/almin/-/almin-0.12.3.tgz#418eb7be970b3978954bac91128d13f073270f36"
   dependencies:
     map-like "^1.1.2"
     object-assign "^4.1.0"
@@ -1897,9 +1897,9 @@ create-react-class@^15.5.1:
     fbjs "^0.8.9"
     object-assign "^4.1.1"
 
-cross-env@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-4.0.0.tgz#16083862d08275a4628b0b243b121bedaa55dd80"
+cross-env@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.0.0.tgz#565ccae4d09676441a5087f406fe7661a29c931b"
   dependencies:
     cross-spawn "^5.1.0"
     is-windows "^1.0.0"
@@ -3031,14 +3031,7 @@ from@~0:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/from/-/from-0.1.7.tgz#83c60afc58b9c56997007ed1a768b3ab303a44fe"
 
-fs-extra-p@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/fs-extra-p/-/fs-extra-p-4.1.0.tgz#7356871b0ebf5e13c80a1194477a4d587ac0d3fd"
-  dependencies:
-    bluebird-lst "^1.0.2"
-    fs-extra "^2.1.2"
-
-fs-extra-p@^4.3.0:
+fs-extra-p@^4.1.0, fs-extra-p@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/fs-extra-p/-/fs-extra-p-4.3.0.tgz#2e148a544287df0258931cabc583063b4eed2303"
   dependencies:
@@ -5220,6 +5213,10 @@ path-to-glob-pattern@^1.0.1:
   dependencies:
     shelljs "^0.7.6"
 
+path-to-glob-pattern@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/path-to-glob-pattern/-/path-to-glob-pattern-1.0.2.tgz#473e6a3a292a9d13fbae3edccee72d3baba8c619"
+
 path-type@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-1.1.0.tgz#59c44f7ee491da704da415da5a4070ba4f8fe441"
@@ -6758,7 +6755,7 @@ sumchecker@^2.0.1, sumchecker@^2.0.2:
   dependencies:
     debug "^2.2.0"
 
-supports-color@3.1.2:
+supports-color@3.1.2, supports-color@^3.1.0:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-3.1.2.tgz#72a262894d9d408b956ca05ff37b2ed8a6e2a2d5"
   dependencies:
@@ -6768,7 +6765,7 @@ supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
 
-supports-color@^3.1.0, supports-color@^3.2.3:
+supports-color@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-3.2.3.tgz#65ac0504b3954171d8a64946b2ae3cbb8a5f54f6"
   dependencies:
@@ -6890,9 +6887,21 @@ textlint-plugin-markdown@^2.0.1:
   dependencies:
     markdown-to-ast "^4.0.0"
 
+textlint-plugin-markdown@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/textlint-plugin-markdown/-/textlint-plugin-markdown-2.0.2.tgz#5b172bc59feb8e230068991e2fc085257983ac40"
+  dependencies:
+    markdown-to-ast "^4.0.0"
+
 textlint-plugin-text@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/textlint-plugin-text/-/textlint-plugin-text-1.1.0.tgz#6d1ee2151cb10492ee858a8ebd9007b4cc945341"
+  dependencies:
+    txt-to-ast "^1.1.0"
+
+textlint-plugin-text@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/textlint-plugin-text/-/textlint-plugin-text-1.1.1.tgz#d046d6335c3ffeea7ae58246f3e58d453d8eb0c9"
   dependencies:
     txt-to-ast "^1.1.0"
 
@@ -6935,6 +6944,41 @@ textlint@^8.0.0:
     textlint-formatter "^1.7.3"
     textlint-plugin-markdown "^2.0.1"
     textlint-plugin-text "^1.1.0"
+    traverse "^0.6.6"
+    try-resolve "^1.0.1"
+    txt-ast-traverse "^1.2.0"
+    unique-concat "^0.2.2"
+
+textlint@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/textlint/-/textlint-8.0.1.tgz#b8e3abd26cff51a9bcfa85a98feedd278ce03e24"
+  dependencies:
+    bluebird "^3.0.5"
+    carrack "0.0.5"
+    chalk "^1.1.1"
+    debug "^2.1.0"
+    deep-equal "^1.0.1"
+    diff "^2.2.2"
+    file-entry-cache "^2.0.0"
+    get-stdin "^5.0.1"
+    glob "^7.1.1"
+    interop-require "^1.0.0"
+    is-file "^1.0.0"
+    log-symbols "^1.0.2"
+    map-like "^1.0.1"
+    md5 "^2.2.1"
+    mkdirp "^0.5.0"
+    object-assign "^4.0.1"
+    optionator "^0.8.0"
+    path-to-glob-pattern "^1.0.2"
+    rc-config-loader "^1.0.2"
+    read-pkg "^1.1.0"
+    string-width "^1.0.1"
+    structured-source "^3.0.2"
+    text-table "^0.2.0"
+    textlint-formatter "^1.7.3"
+    textlint-plugin-markdown "^2.0.2"
+    textlint-plugin-text "^1.1.1"
     traverse "^0.6.6"
     try-resolve "^1.0.1"
     txt-ast-traverse "^1.2.0"

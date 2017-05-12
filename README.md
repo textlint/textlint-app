@@ -56,16 +56,16 @@ Result:
 
 You can install textlint-app in local environment.
 
-    npm install
-    npm run bootstrap
-    npm run watch
-    npm run electron
+    yarn install
+    yarn run bootstrap
+    yarn run watch
+    yarn run electron
 
 ### Update packages
 
 If you update packages/ modules
 
-    yar run publish
+    yarn run publish
     # It bump version, not publish to npm
     
 Update packages/ dependencies

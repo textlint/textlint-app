@@ -91,7 +91,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.22.0",
     "chokidar-cli": "^1.2.0",
-    "cross-env": "^4.0.0",
+    "cross-env": "^5.0.0",
     "css-loader": "^0.28.1",
     "electron": "^1.4.15",
     "electron-builder": "^17.3.1",
@@ -121,7 +121,7 @@
     "webpack": "^2.5.1"
   },
   "dependencies": {
-    "almin": "^0.12.2",
+    "almin": "^0.12.3",
     "almin-logger": "^4.0.3",
     "classnames": "^2.2.5",
     "codemirror": "^5.23.0",
@@ -145,7 +145,7 @@
     "react-router": "^3.0.0",
     "strip-json-comments": "^2.0.1",
     "suitcss-classnames": "^1.1.0",
-    "textlint": "^8.0.0",
+    "textlint": "^8.0.1",
     "textlint-app-locator": "file:packages/textlint-app-locator",
     "textlint-message-to-codemirror": "^1.0.0",
     "textlint-server-package-manager": "file:packages/textlint-server-package-manager"
