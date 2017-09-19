@@ -6,6 +6,7 @@ dist: trusty
 language: c
 
 matrix:
+  fast_finish: true
   include:
     - os: osx
     - os: linux
