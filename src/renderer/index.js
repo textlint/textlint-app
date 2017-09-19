@@ -3,6 +3,7 @@
 // deps
 require("office-ui-fabric-react/dist/css/fabric.css");
 import i18next from "i18next";
+
 const remote = require("electron").remote;
 const LanguageDetector = remote.require("i18next-electron-language-detector");
 
@@ -19,11 +20,14 @@ const locator = require("textlint-app-locator");
 const { Dispatcher, Context } = require("almin");
 locator.context = new Context({
     store: AppStore.create(),
-    dispatcher: new Dispatcher()
+    dispatcher: new Dispatcher(),
+    options: {
+        performanceProfile: process.env.NODE_ENV !== "production"
+    }
 });
 
 if (process.env.NODE_ENV !== "production") {
-    const AlminLogger = require("almin-logger");
+    const AlminLogger = require("almin-logger").AlminLogger;
     const logger = new AlminLogger();
     logger.startLogging(locator.context);
 }
@@ -46,7 +50,7 @@ i18next.use(LanguageDetector).init({
     }
     locator.context.useCase(InitializeUseCase.create()).execute().then(() => {
         // entry point
-        ReactDOM.render(<App />, document.getElementById("js-app"));
+        ReactDOM.render(<App/>, document.getElementById("js-app"));
     });
 
 });
