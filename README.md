@@ -20,7 +20,7 @@ Download Binary from <https://github.com/textlint/textlint-app/releases/latest>
 - Cross platform
     - Windows/Linux/Mac - [Download it](https://github.com/textlint/textlint-app/releases/latest)
 - Support `.textlintrc`
-    - You can use exist `.textlintrc` config
+    - You can use existing `.textlintrc` config
 - Support `--fix`
     - Automatically fix lint error
 - TODO:
